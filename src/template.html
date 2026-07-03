@@ -1,0 +1,787 @@
+<title>The World Cup Funnel — 1982–2026 by Confederation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#eef1f6; --panel:#ffffff; --panel-2:#f6f8fb; --ink:#151a21; --ink-2:#414b59;
+  --muted:#69748a; --hair:#e0e6ef; --hair-2:#eef2f8;
+  --gold:#b07d1e; --gold-ink:#8a6414;
+  /* confederation categorical — light-mode validated (CVD pass, all >=3:1) */
+  --c-uefa:#1f6fb2; --c-conmebol:#009e73; --c-concacaf:#b23a82;
+  --c-caf:#c77400; --c-afc:#c1272d; --c-ofc:#2c8dbf;
+  --shadow:0 1px 2px rgba(20,26,33,.05),0 8px 24px -12px rgba(20,26,33,.18);
+  --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --disp:"Helvetica Neue","Arial Nova","Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0c0f14; --panel:#161b22; --panel-2:#1b212a; --ink:#e9edf3; --ink-2:#c1cad6;
+    --muted:#8b98a9; --hair:#262d38; --hair-2:#1f2530;
+    --gold:#e0ae4e; --gold-ink:#e8bf6e;
+    --c-uefa:#4c9ad9; --c-conmebol:#1f9e79; --c-concacaf:#c95b95;
+    --c-caf:#c67f1c; --c-afc:#e5544e; --c-ofc:#3391c4;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eef1f6; --panel:#ffffff; --panel-2:#f6f8fb; --ink:#151a21; --ink-2:#414b59;
+  --muted:#69748a; --hair:#e0e6ef; --hair-2:#eef2f8;
+  --gold:#b07d1e; --gold-ink:#8a6414;
+  --c-uefa:#1f6fb2; --c-conmebol:#009e73; --c-concacaf:#b23a82;
+  --c-caf:#c77400; --c-afc:#c1272d; --c-ofc:#2c8dbf;
+  --shadow:0 1px 2px rgba(20,26,33,.05),0 8px 24px -12px rgba(20,26,33,.18);
+}
+:root[data-theme="dark"]{
+  --bg:#0c0f14; --panel:#161b22; --panel-2:#1b212a; --ink:#e9edf3; --ink-2:#c1cad6;
+  --muted:#8b98a9; --hair:#262d38; --hair-2:#1f2530;
+  --gold:#e0ae4e; --gold-ink:#e8bf6e;
+  --c-uefa:#4c9ad9; --c-conmebol:#1f9e79; --c-concacaf:#c95b95;
+  --c-caf:#c67f1c; --c-afc:#e5544e; --c-ofc:#3391c4;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;line-height:1.05;text-wrap:balance;margin:0}
+p{margin:0 0 1em}
+a{color:var(--c-uefa)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:11px;
+  font-weight:600;color:var(--muted)}
+.gold{color:var(--gold-ink)}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:64px 0 40px;border-bottom:1px solid var(--hair);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 82% -10%, color-mix(in srgb,var(--gold) 12%,transparent), transparent 60%);
+  opacity:.7}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(34px,6.2vw,68px);margin:14px 0 0}
+.hero .sub{font-size:clamp(16px,2vw,20px);color:var(--ink-2);max-width:60ch;margin-top:18px}
+.mini-funnel{display:flex;flex-direction:column;gap:3px;margin:26px 0 0;max-width:520px}
+.mini-funnel .mf{height:15px;border-radius:3px;display:flex;align-items:center;justify-content:flex-end;
+  padding-right:8px;font-family:var(--mono);font-size:9.5px;color:#fff;letter-spacing:.02em;
+  background:linear-gradient(90deg,var(--c-uefa),color-mix(in srgb,var(--c-uefa) 55%,var(--gold)));
+  box-shadow:var(--shadow)}
+.mf b{font-weight:700}
+
+/* ============ SECTION ============ */
+section{padding:46px 0}
+section+section{border-top:1px solid var(--hair)}
+.sec-head{margin-bottom:26px;max-width:66ch}
+.sec-head h2{font-size:clamp(23px,3.4vw,32px);margin-top:8px}
+.sec-head p{margin-top:12px;color:var(--ink-2)}
+.lead{font-size:17px;color:var(--ink-2)}
+
+/* ============ STAT TILES ============ */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.tile{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:18px 18px 16px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden}
+.tile .n{font-family:var(--disp);font-weight:800;font-size:38px;line-height:1;letter-spacing:-.03em;
+  font-variant-numeric:tabular-nums}
+.tile .k{font-size:13px;color:var(--muted);margin-top:9px;line-height:1.45}
+.tile .rail{position:absolute;left:0;top:0;bottom:0;width:4px}
+
+/* ============ CONTROLS ============ */
+.panel{background:var(--panel);border:1px solid var(--hair);border-radius:16px;box-shadow:var(--shadow)}
+.controls{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;padding:18px 20px;
+  border-bottom:1px solid var(--hair)}
+.ctrl-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:10px;
+  color:var(--muted);display:block;margin-bottom:8px;font-weight:600}
+.editions{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:13px;font-weight:600;padding:7px 11px;border-radius:8px;
+  border:1px solid var(--hair);background:var(--panel-2);color:var(--ink-2);cursor:pointer;
+  transition:border-color .12s,background .12s}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip.agg[aria-pressed="true"]{background:var(--gold);color:#1a1204;border-color:var(--gold)}
+.seg{display:inline-flex;border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:var(--panel-2)}
+.seg button{font-family:var(--sans);font-size:13px;font-weight:600;padding:7px 13px;border:0;background:transparent;
+  color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.levels{display:flex;flex-wrap:wrap;gap:6px}
+.lvl{font-family:var(--mono);font-size:13px;font-weight:700;padding:6px 12px;border-radius:8px;border:1px solid var(--hair);
+  background:var(--panel-2);color:var(--ink-2);cursor:pointer;text-align:center;line-height:1.15}
+.lvl small{display:block;font-size:9px;color:var(--muted);font-weight:500;letter-spacing:.02em}
+.lvl:hover{border-color:var(--muted)}
+.lvl[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.lvl[aria-pressed="true"] small{color:var(--bg);opacity:.75}
+
+/* ============ LEGEND ============ */
+.legend{display:flex;flex-wrap:wrap;gap:6px;padding:14px 20px;border-bottom:1px solid var(--hair)}
+.lg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:5px 10px 5px 8px;
+  border-radius:20px;border:1px solid var(--hair);background:var(--panel-2);cursor:pointer;color:var(--ink-2);
+  transition:opacity .12s,border-color .12s}
+.lg .sw{width:12px;height:12px;border-radius:3px;flex:none}
+.lg .lgn{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500}
+.lg[aria-pressed="false"]{opacity:.34}
+
+/* ============ FUNNEL ============ */
+.funnel{padding:20px 20px 8px}
+.frow{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:7px 0}
+.frow .meta{text-align:right}
+.frow .tlabel{font-weight:700;font-size:14px;line-height:1.15}
+.frow .tteams{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
+.bar{position:relative;height:36px;display:flex;gap:2px;border-radius:6px;width:100%}
+.seg-b{height:100%;min-width:3px;border-radius:3px;position:relative;
+  display:flex;align-items:center;justify-content:center;transition:opacity .15s;overflow:hidden}
+.seg-b span{font-family:var(--mono);font-size:11px;font-weight:700;color:#fff;
+  text-shadow:0 1px 1.5px rgba(0,0,0,.4);white-space:nowrap;z-index:2}
+.seg-b span sup{font-size:8.5px;opacity:.95;margin-left:1px}
+.seg-b.faded{opacity:.15}
+.po-add{position:absolute;top:0;bottom:0;right:0;z-index:1;border-left:1.5px solid rgba(255,255,255,.7);
+  background:repeating-linear-gradient(45deg, rgba(255,255,255,.5) 0 2px, transparent 2px 5px)}
+.frow.champ .bar{height:40px}
+.frow.pending .bar{background:repeating-linear-gradient(45deg,var(--hair-2),var(--hair-2) 7px,transparent 7px,transparent 14px);
+  border:1px dashed var(--hair);border-radius:6px}
+.frow.pending .pmsg{font-family:var(--mono);font-size:11px;color:var(--muted);padding-left:12px;
+  display:flex;align-items:center;height:100%}
+.edition-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;padding:18px 20px 4px}
+.edition-title h3{font-size:22px}
+.edition-title .host{color:var(--muted);font-size:13.5px;font-family:var(--mono)}
+.edition-title .badge{font-family:var(--mono);font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;
+  background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold-ink)}
+.edition-title .badge.live{background:color-mix(in srgb,var(--c-afc) 16%,transparent);color:var(--c-afc)}
+
+/* ============ PLAY-OFF ROW ============ */
+.po-row{align-items:start}
+.po-contests{display:flex;flex-wrap:wrap;gap:10px;width:100%;padding:2px 0}
+.po-card{display:flex;gap:5px;align-items:stretch;border:1px solid var(--hair);border-radius:10px;
+  padding:5px;background:var(--panel-2);position:relative}
+.po-card::after{content:"1 place";position:absolute;top:-8px;left:9px;font-family:var(--mono);font-size:8.5px;
+  font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--panel);padding:0 4px}
+.po-chip{position:relative;display:flex;flex-direction:column;justify-content:center;gap:1px;
+  padding:6px 12px 6px 9px;border-radius:6px;min-width:72px;cursor:default}
+.po-chip .pcn{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.po-chip .pct{font-size:11.5px;font-weight:700;line-height:1.1;white-space:nowrap}
+.po-chip.won{background:var(--cc);color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.35)}
+.po-chip.won .pcn{color:rgba(255,255,255,.9)}
+.po-chip.won .pw{position:absolute;top:3px;right:5px;font-size:10px;text-shadow:none}
+.po-chip.lost{background:transparent;border:1px dashed color-mix(in srgb,var(--cc) 55%,transparent);color:var(--muted)}
+.po-chip.lost .pcn{color:var(--cc);opacity:.85}
+.po-none{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;align-items:center;height:36px}
+
+/* ============ COMPARATOR ============ */
+.cmp{padding:18px 20px 22px}
+.cmp-row{display:grid;grid-template-columns:74px 1fr;gap:13px;align-items:center;padding:6px 0}
+.cmp-row .yl{font-family:var(--mono);font-weight:700;font-size:14px;text-align:right;line-height:1.1}
+.cmp-row .yl small{display:block;font-weight:500;color:var(--muted);font-size:9.5px;text-transform:uppercase;letter-spacing:.05em}
+.cmp .bar{height:32px}
+.cmp-empty{color:var(--muted);font-size:13px;font-style:italic;padding:16px 0}
+.cmp-note{font-family:var(--mono);font-size:11px;color:var(--muted);padding:2px 0 14px}
+
+/* ============ TABLE ============ */
+.tbl-scroll{overflow-x:auto;padding:6px 20px 20px}
+table.data{border-collapse:collapse;width:100%;font-size:13.5px;min-width:660px}
+table.data th,table.data td{padding:8px 9px;text-align:right;border-bottom:1px solid var(--hair-2)}
+table.data th:first-child,table.data td:first-child{text-align:left}
+table.data thead th{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted);font-weight:600;border-bottom:1px solid var(--hair);position:sticky;top:0;background:var(--panel)}
+table.data thead th .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:baseline}
+table.data td.tier{font-weight:700;white-space:nowrap}
+table.data td.tier small{display:block;font-family:var(--mono);font-weight:500;color:var(--muted);font-size:10.5px}
+table.data td .v{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:700}
+table.data td .v .po{color:var(--gold-ink);font-size:11px}
+table.data td .p{font-family:var(--mono);font-size:11px;color:var(--muted);display:block;margin-top:1px}
+table.data td.zero .v{color:var(--hair)}
+table.data td.zero .p{display:none}
+table.data td.tot{background:var(--panel-2);font-weight:700}
+table.data tr.champ-row td{border-bottom:none}
+table.data tr.champ-row td.tier{color:var(--gold-ink)}
+
+/* nations */
+.nations{padding:0 20px 22px}
+.nat-toggle{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink-2);cursor:pointer;
+  background:var(--panel-2);border:1px solid var(--hair);border-radius:8px;padding:8px 12px;display:inline-flex;
+  gap:8px;align-items:center}
+.nat-body{margin-top:14px;display:none;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.nat-body.open{display:grid}
+.nat-col{border:1px solid var(--hair);border-radius:11px;padding:12px 13px;background:var(--panel-2)}
+.nat-col h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin:0 0 8px;
+  display:flex;align-items:center;gap:7px}
+.nat-col h4 .sw{width:10px;height:10px;border-radius:2px}
+.nat-col h4 .c{margin-left:auto;color:var(--muted);font-weight:600}
+.nat-row{font-size:12.5px;padding:4px 0;border-top:1px solid var(--hair-2);line-height:1.4;display:flex;justify-content:space-between;gap:8px}
+.nat-row:first-of-type{border-top:0}
+.nat-row .stage{font-family:var(--mono);font-size:9.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;flex:none}
+.nat-row .stage.crown{color:var(--gold-ink);font-weight:700}
+.nat-row .stage.po{color:var(--gold-ink)}
+.nat-empty{font-size:12px;color:var(--muted);font-style:italic}
+
+/* playoff panel */
+.po{padding:18px 20px 22px;border-top:1px solid var(--hair);background:var(--panel-2);border-radius:0 0 16px 16px}
+.po h4{font-family:var(--disp);font-size:15px;margin:0 0 6px}
+.po p{font-size:13.5px;color:var(--ink-2);margin:0}
+.po .tag{font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;
+  background:var(--panel);border:1px solid var(--hair);color:var(--ink-2);margin-right:5px;white-space:nowrap;display:inline-block;margin-top:6px}
+
+/* callouts */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:13px;padding:18px 20px;box-shadow:var(--shadow)}
+.card h3{font-size:16px;margin-bottom:8px}
+.card p{font-size:14px;color:var(--ink-2);margin:0}
+.card ul{margin:8px 0 0;padding-left:18px;font-size:13.5px;color:var(--ink-2)}
+.card li{margin:5px 0}
+.switch-row{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--hair-2)}
+.switch-row:first-of-type{border-top:0}
+.switch-row .yr{font-family:var(--mono);font-weight:700;font-size:12px;color:var(--gold-ink);flex:none;width:66px}
+.switch-row .tx{font-size:13.5px;color:var(--ink-2)}
+.switch-row .tx b{color:var(--ink)}
+
+/* dominance strip */
+.dom{display:flex;flex-direction:column;gap:9px}
+.domrow{display:grid;grid-template-columns:96px 1fr 54px;gap:12px;align-items:center}
+.domrow .dl{font-family:var(--mono);font-size:12px;font-weight:600;text-align:right;color:var(--ink-2)}
+.domrow .dt{height:22px;border-radius:5px;display:flex;align-items:center;padding-left:8px;color:#fff;
+  font-family:var(--mono);font-size:11px;font-weight:700;text-shadow:0 1px 1.5px rgba(0,0,0,.3);min-width:2px}
+.domrow .dv{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-2)}
+
+/* tooltip */
+#tt{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .1s;max-width:264px;
+  background:var(--ink);color:var(--bg);border-radius:9px;padding:10px 12px;font-size:12.5px;line-height:1.45;
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.5)}
+#tt .tth{font-family:var(--mono);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+  display:flex;align-items:center;gap:6px;margin-bottom:5px}
+#tt .tth .sw{width:10px;height:10px;border-radius:2px}
+#tt .ttv{font-family:var(--mono);font-size:14px;font-weight:700;margin-bottom:4px}
+#tt .ttn{opacity:.82;font-size:11.5px;max-height:150px;overflow:hidden}
+
+/* footnotes */
+.foot{font-size:13px;color:var(--muted)}
+.foot h3{font-size:15px;color:var(--ink);margin:18px 0 8px}
+.foot ul{padding-left:18px;margin:6px 0}
+.foot li{margin:4px 0}
+.foot a{color:var(--c-uefa);word-break:break-word}
+.src-cols{columns:2;column-gap:26px}
+@media(max-width:760px){.src-cols{columns:1}}
+.tag-approx{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--gold-ink);
+  border:1px solid color-mix(in srgb,var(--gold) 40%,transparent);border-radius:4px;padding:1px 5px;vertical-align:middle}
+.hatch-key{display:inline-block;width:14px;height:11px;border-radius:2px;vertical-align:middle;margin:0 3px;
+  border:1px solid var(--muted);background:repeating-linear-gradient(45deg,var(--muted) 0 2px,transparent 2px 5px)}
+footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);font-size:13px}
+
+@media(max-width:720px){
+  .grid2{grid-template-columns:1fr}
+  .frow{grid-template-columns:112px 1fr;gap:10px}
+  .frow .tlabel{font-size:12.5px}
+  .seg-b span{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/*__CONF_COLORS__*/
+</style>
+
+<div id="tt" role="tooltip"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">FIFA World Cup · 1982 – 2026 · a confederation funnel</div>
+    <h1>211 nations enter.<br>One lifts the trophy.</h1>
+    <p class="sub">Twelve World Cups, traced ring by ring — from every FIFA member association, down through qualifying berths and the tournament field, to the last team standing — and colour-coded by the six confederations that funnel the world's teams. Phases are <b>aligned by the number of teams remaining</b>, so 2026's Round of 32 lines up with the 32-nation fields of 1998–2022.</p>
+    <div class="mini-funnel" id="miniFunnel" aria-hidden="true"></div>
+    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. Data runs through the <b>Round of 32</b> (concluding 3 July 2026); later rounds are marked not-yet-played.</p>
+  </div>
+</header>
+
+<main>
+
+<!-- KEY FINDINGS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The shape of the funnel</div>
+      <h2>Everyone qualifies from somewhere. Almost no one wins from outside two places.</h2>
+      <p class="lead">Across the modern 32-team era (1998–2022, seven tournaments) the pool that qualifies is genuinely global — but the deeper the round, the more the map collapses onto Europe and South America.</p>
+    </div>
+    <div class="tiles" id="tiles"></div>
+    <div style="margin-top:26px" class="grid2">
+      <div class="card">
+        <h3>Semi-final berths, 1982–2026 <span class="mono" style="font-size:12px;color:var(--muted)">(44 slots played)</span></h3>
+        <p style="margin-bottom:14px">Of every semi-finalist across twelve World Cups, all but two came from UEFA or CONMEBOL. The exceptions: <b>South Korea</b> (AFC, 2002) and <b>Morocco</b> (CAF, 2022).</p>
+        <div class="dom" id="domSF"></div>
+      </div>
+      <div class="card">
+        <h3>Champions, 1982–2022 <span class="mono" style="font-size:12px;color:var(--muted)">(11 decided)</span></h3>
+        <p style="margin-bottom:14px">Only two confederations have ever won a World Cup in this span — indeed, ever. Europe took seven of eleven; South America the other four. 2026 is still open.</p>
+        <div class="dom" id="domWin"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE FUNNEL -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The interactive funnel</div>
+      <h2>Follow any tournament down the rings</h2>
+      <p>Pick an edition — or the pooled <b class="gold">1998–2022 aggregate</b>. Each ring is a phase, stretched to full width so the confederation mix is easy to read; each colour a confederation. A dedicated <b>Play-off places</b> row shows which continents had a shot at the extra inter-confederation spots and who won — each win then lands as a hatched <span class="hatch-key"></span><b>+1</b> on the Qualified field. Hover any block for the nations; open the full roster below.</p>
+    </div>
+
+    <div class="panel">
+      <div class="controls">
+        <div>
+          <span class="ctrl-label">Edition</span>
+          <div class="editions" id="editions"></div>
+        </div>
+        <div>
+          <span class="ctrl-label">Show</span>
+          <div class="seg" id="valSeg" role="group" aria-label="Value mode">
+            <button data-val="count" aria-pressed="true">Counts</button>
+            <button data-val="pct" aria-pressed="false">Percent</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend legend-host"></div>
+      <div class="edition-title" id="edTitle"></div>
+      <div class="funnel" id="funnel"></div>
+      <div class="tbl-scroll"><table class="data" id="dtable"></table></div>
+      <div class="nations">
+        <button class="nat-toggle" id="natToggle" aria-expanded="false">▸ Show every qualified nation, by phase</button>
+        <div class="nat-body" id="natBody"></div>
+      </div>
+      <div class="po" id="poPanel"></div>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:12px">
+      <span class="tag-approx">≈</span> FIFA-membership figures for past editions are approximate reconstructions from confederation admission dates; the 2026 breakdown (211) is exact. Everything from <b>direct berths downward is exact and cross-verified</b> against Wikipedia tournament, qualification and knockout-stage pages. <b>Direct berths</b> are the guaranteed slots (incl. hosts and, through 2002, holders). The <b>Play-off places</b> row shows every inter-confederation play-off — which continents had a chance at an extra spot and who won — and each win then lands as a hatched <b>+1</b> on the Qualified field, so berths reconcile exactly.
+    </p>
+  </div>
+</section>
+
+<!-- COMPARE ACROSS YEARS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Compare across years</div>
+      <h2>Every edition, side by side, at one phase</h2>
+      <p>Choose a level — the number of teams remaining — and see the confederation mix at that exact phase for every World Cup that reached it. At <b>32 teams</b>, 2026's Round of 32 lines up against the entire fields of 1998–2022; at <b>16</b>, ten editions' Rounds of 16 stack up together.</p>
+    </div>
+    <div class="panel">
+      <div class="controls">
+        <div style="width:100%">
+          <span class="ctrl-label">Teams remaining at this phase</span>
+          <div class="levels" id="levels"></div>
+        </div>
+      </div>
+      <div class="legend legend-host"></div>
+      <div class="cmp" id="cmp"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SWITCHES + METHOD -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The fine print that changes the map</div>
+      <h2>Nations that switched confederations</h2>
+      <p>Confederation membership is not fixed. Where a team is credited depends on which body it qualified <i>through</i> in that cycle — and a few moves genuinely reshuffle the funnel.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Border-crossing associations</h3>
+        <div class="switch-row"><div class="yr">2006→</div><div class="tx"><b>Australia</b> left the OFC for the AFC on 1 Jan 2006. It qualified for <b>2006 via Oceania</b> (beating Uruguay in a play-off) — credited here to OFC — but from <b>2010 through the AFC</b>. This is the single most consequential switch in the dataset.</div></div>
+        <div class="switch-row"><div class="yr">~1994</div><div class="tx"><b>Israel</b>, expelled from the AFC in 1974, spent years in the Oceania/European qualifying wilderness (it contested Oceania's play-off route as late as 1990 qualifying) before joining <b>UEFA</b>.</div></div>
+        <div class="switch-row"><div class="yr">2002</div><div class="tx"><b>Kazakhstan</b> moved from the AFC to <b>UEFA</b>.</div></div>
+        <div class="switch-row"><div class="yr">1991–93</div><div class="tx">Dissolutions stayed <i>within</i> UEFA: the <b>USSR</b> (→ Russia + others; Central-Asian republics went to the AFC), <b>SFR Yugoslavia</b> (→ Croatia, Slovenia…), and <b>Czechoslovakia</b> (→ Czechia + Slovakia). West Germany won 1990 as a divided nation; reunified that October.</div></div>
+      </div>
+      <div class="card">
+        <h3>Rules that move the numbers</h3>
+        <ul>
+          <li><b>Host auto-qualifies</b> and is counted in the host's confederation — including co-hosts (Korea + Japan, both AFC, 2002) and three hosts (USA, Canada, Mexico, all CONCACAF, 2026).</li>
+          <li><b>Holders auto-qualified through 2002</b> (last: France). This padded CONMEBOL to five in 1998 (Brazil) and UEFA in 2002; abolished from 2006.</li>
+          <li><b>Inter-confederation play-offs</b> decide the extra places — shown here as <b>+1</b>. They repeatedly settled whether OFC sent anyone at all, and in 2026 handed the two extra spots to <b>CAF (DR Congo)</b> and <b>AFC (Iraq)</b>.</li>
+          <li><b>OFC</b> had <b>no guaranteed berth until 2026</b>. Across 1982–2022 it reached the field only via play-offs — New Zealand (1982, 2010) and Australia (2006, as OFC).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD / SOURCES -->
+<section>
+  <div class="wrap foot">
+    <div class="sec-head">
+      <div class="eyebrow">Methodology &amp; sources</div>
+      <h2 style="color:var(--ink)">How this was built</h2>
+    </div>
+    <p>Each of the twelve editions was researched independently against primary references and cross-checked so that every ring sums correctly: qualified fields sum to 24 / 32 / 48; direct berths plus play-off <b>+1</b>s reconcile exactly to the field; each knockout tier halves cleanly (16 → 8 → 4 → 2 → 1). Teams are attributed to the confederation they qualified <i>through</i> in that cycle, honouring the switches above. FIFA-membership totals for past editions are approximate (reconstructed from confederation admission dates and known milestones: ≈150 members in 1982, passing 200 around 1998–2000, and 211 since Kosovo &amp; Gibraltar joined in 2016); the 2026 per-confederation breakdown — UEFA 55, CAF 54, AFC 46, CONCACAF 35, CONMEBOL 10, OFC 11 = 211 — is exact.</p>
+    <h3>Primary sources</h3>
+    <div class="src-cols">
+    <ul>
+      <li>Wikipedia — <a href="https://en.wikipedia.org/wiki/List_of_FIFA_member_associations">List of FIFA member associations</a></li>
+      <li>Wikipedia — “<a href="https://en.wikipedia.org/wiki/1982_FIFA_World_Cup">1982</a>”, “1986”, … “<a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup">2026 FIFA World Cup</a>” (tournament, qualification &amp; knockout-stage pages for each edition)</li>
+      <li>Wikipedia — <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification_(inter-confederation_play-offs)">2026 inter-confederation play-offs</a>; 2022 <a href="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(AFC%E2%80%93CONMEBOL_play-off)">AFC–CONMEBOL</a> &amp; <a href="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(CONCACAF%E2%80%93OFC_play-off)">CONCACAF–OFC</a> play-offs</li>
+      <li>FIFA.com — member associations &amp; 2026 qualified teams</li>
+      <li>Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports &amp; FIFA.com (accessed 3 July 2026)</li>
+    </ul>
+    </div>
+    <p style="margin-top:16px;font-size:12px">Two automated source-fetches produced garbled knockout scores during research (2014 and 2022 quarter-finals); both were caught via internal inconsistency and corrected against ESPN / Sky / FIFA before entry.</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live through the Round of 32 (3 July 2026).
+</div></footer>
+
+<script>
+/* ============================ DATA ============================ */
+const DATA = /*__DATA__*/null;
+const CONFS = DATA.confederations.map(c=>({k:c.key,long:c.region,v:c.cssVar}));
+const CK = CONFS.map(c=>c.k);
+const TIERS = DATA.tierDefinitions;
+function teamsAtTier(e,tier){
+  if(tier==='members'||tier==='direct')return null;
+  const d=TIERS[tier]; if(!d)return null;
+  return d.teams==='size'?e.size:d.teams;
+}
+const ED = DATA.editions.map(x=>({
+  year:x.year, host:x.host, hostConf:x.hostConfed, size:x.fieldSize,
+  champion:x.champion, championConf:x.championConfed, live:x.live, membersExact:x.membersExact,
+  order:x.order.slice(), pendingFrom:x.pendingFrom,
+  members:x.fifaMembers, direct:x.directBerths,
+  playoffs:(x.playoffs||[]).map(p=>({entrants:p.entrants.map(en=>[en.confed,en.team]),winner:p.winner})),
+  playoff:{note:x.qualificationNotes.summary, tags:x.qualificationNotes.tags},
+  tiers:x.knockout
+}));
+const byYear={}; ED.forEach(e=>byYear[e.year]=e);
+ED.forEach(e=>{ if(!e.playoffs)e.playoffs=[];
+  if(!e.order.includes('playoffs')){const i=e.order.indexOf('direct'); e.order.splice(i+1,0,'playoffs');} });
+
+function buildAggregate(){
+  const yrs=[1998,2002,2006,2010,2014,2018,2022];
+  const agg={year:'AGG',isAgg:true,size:224,order:['qualified','r16','qf','sf','final','winner'],tiers:{},editions:yrs.length};
+  agg.order.forEach(t=>{agg.tiers[t]={};CK.forEach(c=>agg.tiers[t][c]=0);
+    yrs.forEach(y=>{CK.forEach(c=>agg.tiers[t][c]+=(byYear[y].tiers[t][c]||[]).length);});});
+  return agg;
+}
+const AGG=buildAggregate();
+
+function tallyTier(tier,years){const o={};CK.forEach(c=>o[c]=0);
+  years.forEach(y=>{const t=byYear[y].tiers[tier];if(t)CK.forEach(c=>o[c]+=(t[c]||[]).length);});return o;}
+const sfTally=tallyTier('sf',[1982,1986,1990,1994,1998,2002,2006,2010,2014,2018,2022,2026]);
+const winTally=tallyTier('winner',[1982,1986,1990,1994,1998,2002,2006,2010,2014,2018,2022]);
+
+/* ============================ HELPERS ============================ */
+const cssv=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const confColor=k=>cssv(CONFS.find(c=>c.k===k).v);
+function countAt(e,tier,c){
+  if(tier==='members'||tier==='direct') return e[tier][c];
+  const t=e.tiers[tier]; return t?(t[c]||[]).length:0;
+}
+function sumTier(e,tier){return CK.reduce((s,c)=>s+countAt(e,tier,c),0);}
+function poWin(e,c){ if(e.isAgg||!e.direct)return 0; return Math.max(0, countAt(e,'qualified',c)-e.direct[c]); }
+function tierTeams(e,tier){const d=TIERS[tier];if(!d)return null;return d.teams==='size'?e.size:d.teams;}
+
+/* ============================ TOOLTIP ============================ */
+const tt=document.getElementById('tt');
+function showTT(html,x,y){tt.innerHTML=html;tt.style.opacity='1';
+  const w=tt.offsetWidth,h=tt.offsetHeight;let nx=x+14,ny=y+14;
+  if(nx+w>innerWidth-8)nx=x-w-14; if(ny+h>innerHeight-8)ny=y-h-14;
+  tt.style.left=Math.max(8,nx)+'px';tt.style.top=Math.max(8,ny)+'px';}
+function hideTT(){tt.style.opacity='0';}
+function ttContent(e,tier,c){
+  const cnt=countAt(e,tier,c), tot=sumTier(e,tier), pct=tot?Math.round(cnt/tot*100):0;
+  const sw=`<span class="sw" style="background:${confColor(c)}"></span>`;
+  let nats='';
+  if(tier==='qualified'){
+    const po=poWin(e,c), arr=e.tiers.qualified[c]||[];
+    nats=(arr.length?`<div class="ttn">${arr.join(' · ')}</div>`:'')
+      + (po>0?`<div class="ttn" style="color:#ffd98a;margin-top:3px">${e.direct[c]} direct + ${po} via inter-confederation play-off</div>`:'');
+  } else if(tier!=='members'&&tier!=='direct'&&e.tiers[tier]){
+    const arr=e.tiers[tier][c]||[]; nats=arr.length?`<div class="ttn">${arr.join(' · ')}</div>`:'';
+  } else if(tier==='direct'){ nats=`<div class="ttn">guaranteed direct berths (excl. play-offs)</div>`; }
+  else if(tier==='members'){ nats=`<div class="ttn">FIFA member associations${e.membersExact?'':' (approx.)'}</div>`; }
+  const label=(e.isAgg?'1998–2022 pooled':e.year)+' · '+TIERS[tier].label;
+  return `<div class="tth">${sw}${c}</div><div class="ttv">${cnt}${tot?` · ${pct}%`:''}</div><div class="ttn" style="opacity:.6;margin-bottom:3px">${label}</div>${nats}`;
+}
+function bindTT(el,e,tier,c){
+  el.onmousemove=ev=>showTT(ttContent(e,tier,c),ev.clientX,ev.clientY);
+  el.onmouseleave=hideTT; el.tabIndex=0;
+  el.onfocus=()=>{const r=el.getBoundingClientRect();showTT(ttContent(e,tier,c),r.right,r.top);};
+  el.onblur=hideTT;
+}
+
+/* ============================ STATE ============================ */
+let state={ed:2026,val:'count',focus:null,level:32};
+
+/* ============================ LEGEND (shared) ============================ */
+function renderLegend(){
+  document.querySelectorAll('.legend-host').forEach(el=>{
+    el.innerHTML='';
+    CONFS.forEach(c=>{
+      const b=document.createElement('button');
+      b.className='lg'; b.setAttribute('aria-pressed', state.focus&&state.focus!==c.k?'false':'true');
+      b.innerHTML=`<span class="sw" style="background:${confColor(c.k)}"></span>${c.k}<span class="lgn">${c.long}</span>`;
+      b.onclick=()=>{state.focus = state.focus===c.k?null:c.k; renderAll();};
+      el.appendChild(b);
+    });
+  });
+}
+
+/* ============================ EDITIONS BAR ============================ */
+function renderEditions(){
+  const el=document.getElementById('editions'); el.innerHTML='';
+  ED.forEach(e=>{
+    const b=document.createElement('button'); b.className='chip';
+    b.textContent=e.year; b.setAttribute('aria-pressed', state.ed===e.year?'true':'false');
+    b.onclick=()=>{state.ed=e.year;renderAll();};
+    el.appendChild(b);
+  });
+  const a=document.createElement('button'); a.className='chip agg';
+  a.textContent='1998–22 ∑'; a.title='Pooled aggregate of the seven 32-team tournaments';
+  a.setAttribute('aria-pressed', state.ed==='AGG'?'true':'false');
+  a.onclick=()=>{state.ed='AGG';renderAll();};
+  el.appendChild(a);
+}
+
+/* ============================ FUNNEL ============================ */
+function currentEd(){return state.ed==='AGG'?AGG:byYear[state.ed];}
+function renderEdTitle(){
+  const e=currentEd(); const el=document.getElementById('edTitle');
+  if(e.isAgg){el.innerHTML=`<h3>1998–2022 · pooled</h3><span class="host">Seven 32-team tournaments · 224 team-slots</span><span class="badge">aggregate</span>`;return;}
+  const badge=e.live?`<span class="badge live">● live · through R32</span>`
+    :`<span class="badge">🏆 ${e.champion} · ${e.championConf}</span>`;
+  el.innerHTML=`<h3>${e.year} · ${e.host}</h3><span class="host">${e.size} teams · host ${e.hostConf}</span>${badge}`;
+}
+function segLabel(cnt,pct){return state.val==='pct'?(pct+'%'):cnt;}
+function playoffRow(e){
+  const row=document.createElement('div'); row.className='frow po-row';
+  const n=e.playoffs.length;
+  const won=e.playoffs.filter(p=>p.winner).length;
+  const sub = n? `${n} place${n>1?'s':''} · ${won} won`:'none';
+  row.innerHTML=`<div class="meta"><div class="tlabel">Play-off places</div><div class="tteams">${sub}</div></div>`;
+  const wrap=document.createElement('div'); wrap.className='po-contests';
+  if(!n){ wrap.innerHTML=`<div class="po-none">No inter-confederation play-offs this edition</div>`; }
+  else e.playoffs.forEach(po=>{
+    const card=document.createElement('div'); card.className='po-card';
+    po.entrants.forEach(([conf,team])=>{
+      const win=conf===po.winner;
+      const chip=document.createElement('div');
+      chip.className='po-chip'+(win?' won':' lost'); chip.style.setProperty('--cc',confColor(conf));
+      if(state.focus&&state.focus!==conf) chip.style.opacity='.2';
+      chip.title=`${conf} — ${team} — ${win?'won → +1 berth':'lost, no berth'}`;
+      chip.innerHTML=`<span class="pcn">${conf}</span><span class="pct">${team}</span>${win?'<span class="pw">✓</span>':''}`;
+      chip.onmousemove=ev=>showTT(`<div class="tth"><span class="sw" style="background:${confColor(conf)}"></span>${conf}</div><div class="ttv">${team}</div><div class="ttn">${win?'Won the inter-confederation play-off → +1 berth':'Lost the inter-confederation play-off — no berth'}</div>`,ev.clientX,ev.clientY);
+      chip.onmouseleave=hideTT;
+      card.appendChild(chip);
+    });
+    wrap.appendChild(card);
+  });
+  row.appendChild(wrap); return row;
+}
+function renderFunnel(){
+  const e=currentEd(); const host=document.getElementById('funnel'); host.innerHTML='';
+  e.order.forEach(tier=>{
+    if(tier==='playoffs'){ host.appendChild(playoffRow(e)); return; }
+    const row=document.createElement('div'); row.className='frow'+(tier==='winner'?' champ':'');
+    const teams=tierTeams(e,tier);
+    const tot=sumTier(e,tier);
+    const pending = e.pendingFrom && e.order.indexOf(tier)>=e.order.indexOf(e.pendingFrom);
+    let teamTxt;
+    if(tier==='members') teamTxt=`${tot}${TIERS.members.approx&&!e.membersExact?' ≈':''}`;
+    else if(tier==='direct') teamTxt=`${tot} berths`;
+    else if(e.isAgg) teamTxt=`${tot} total`;
+    else if(tier==='winner'&&e.champion) teamTxt=`🏆 ${e.champion}`;
+    else teamTxt = teams!=null?`${teams} team${teams===1?'':'s'}`:'';
+    row.innerHTML=`<div class="meta"><div class="tlabel">${TIERS[tier].label}</div><div class="tteams">${teamTxt}</div></div>`;
+    const bar=document.createElement('div');
+    if(pending){
+      row.classList.add('pending'); bar.className='bar';
+      bar.innerHTML=`<div class="pmsg">not yet played · begins 4 July 2026</div>`;
+      row.appendChild(bar); host.appendChild(row); return;
+    }
+    bar.className='bar';
+    CK.forEach(c=>{
+      const cnt=countAt(e,tier,c); if(cnt<=0)return;
+      const seg=document.createElement('div');
+      seg.className='seg-b'+(state.focus&&state.focus!==c?' faded':'');
+      seg.style.width=(cnt/tot*100)+'%'; seg.style.background=confColor(c);
+      const pct=Math.round(cnt/tot*100);
+      const po=(tier==='qualified')?poWin(e,c):0;
+      if(cnt/tot*100>6){
+        seg.innerHTML=`<span>${segLabel(cnt,pct)}${po>0?`<sup>+${po}</sup>`:''}</span>`;
+      }
+      if(po>0){ const add=document.createElement('div'); add.className='po-add'; add.style.width=(po/cnt*100)+'%'; seg.appendChild(add); }
+      bindTT(seg,e,tier,c);
+      bar.appendChild(seg);
+    });
+    row.appendChild(bar); host.appendChild(row);
+  });
+}
+
+/* ============================ TABLE ============================ */
+function renderTable(){
+  const e=currentEd(); const tb=document.getElementById('dtable');
+  let head=`<thead><tr><th>Phase</th>`;
+  CK.forEach(c=>head+=`<th><span class="sw" style="background:${confColor(c)}"></span>${c}</th>`);
+  head+=`<th class="tot">Total</th></tr></thead>`;
+  let body='<tbody>';
+  e.order.forEach(tier=>{
+    if(tier==='playoffs')return;
+    const pending = e.pendingFrom && e.order.indexOf(tier)>=e.order.indexOf(e.pendingFrom);
+    const tot=sumTier(e,tier); const teams=tierTeams(e,tier);
+    const sub = tier==='members'?'members':tier==='direct'?'direct':(teams!=null?teams+(teams===1?' team':' teams'):'');
+    body+=`<tr class="${tier==='winner'?'champ-row':''}"><td class="tier">${TIERS[tier].label}<small>${sub}</small></td>`;
+    if(pending){ body+=`<td colspan="7" style="color:var(--muted);font-family:var(--mono);font-size:12px">— not yet played —</td></tr>`; return; }
+    CK.forEach(c=>{
+      const cnt=countAt(e,tier,c); const pct=tot?Math.round(cnt/tot*100):0;
+      const po=(tier==='qualified')?poWin(e,c):0;
+      const faded=state.focus&&state.focus!==c;
+      const vtxt = cnt>0?(cnt+(po>0?`<span class="po"> +${po}</span>`:'')):'·';
+      body+=`<td class="${cnt<=0?'zero':''}" style="${faded?'opacity:.32':''}"><span class="v" style="color:${cnt>0?confColor(c):''}">${vtxt}</span>${cnt>0&&tot?`<span class="p">${pct}%</span>`:''}</td>`;
+    });
+    body+=`<td class="tot"><span class="v">${tot}</span></td></tr>`;
+  });
+  tb.innerHTML=head+body+'</tbody>';
+}
+
+/* ============================ NATIONS ============================ */
+const STAGE_ABBR={qualified:'',r32:'R32',r12:'2R',r16:'R16',qf:'QF',sf:'SF',final:'Final',winner:'Champion'};
+function renderNations(){
+  const e=currentEd(); const host=document.getElementById('natBody'); host.innerHTML='';
+  if(e.isAgg){host.innerHTML=`<p style="color:var(--muted);font-size:13px;grid-column:1/-1">Select a single edition to list its nations. The aggregate pools seven tournaments.</p>`;return;}
+  const knockoutOrder=['winner','final','sf','qf','r16','r32','r12'];
+  CONFS.forEach(c=>{
+    const q=(e.tiers.qualified[c.k]||[]);
+    const col=document.createElement('div'); col.className='nat-col';
+    col.innerHTML=`<h4><span class="sw" style="background:${confColor(c.k)}"></span>${c.k}<span class="c">${q.length}</span></h4>`;
+    if(!q.length){col.innerHTML+=`<div class="nat-empty">no qualifiers</div>`;host.appendChild(col);return;}
+    const poTeam = poWin(e,c.k)>0 ? (e.tiers.qualified[c.k]||[]) : [];
+    q.forEach(nat=>{
+      let deepest='';
+      for(const st of knockoutOrder){ if(e.tiers[st]&&(e.tiers[st][c.k]||[]).includes(nat)){deepest=st;break;} }
+      const isChamp=e.champion===nat;
+      const badge = deepest?`<span class="stage${isChamp?' crown':''}">${STAGE_ABBR[deepest]||deepest}</span>`:'';
+      col.innerHTML+=`<div class="nat-row"><span>${nat}</span>${badge}</div>`;
+    });
+    host.appendChild(col);
+  });
+}
+
+/* ============================ PLAYOFF PANEL ============================ */
+function renderPO(){
+  const e=currentEd(); const el=document.getElementById('poPanel');
+  if(e.isAgg){el.innerHTML=`<h4>Pooled 1998–2022 · seven 32-team tournaments</h4><p>UEFA supplied <b>43%</b> of all qualifiers (97 of 224) but <b>71%</b> of semi-finalists (20 of 28) and five of seven champions. CONMEBOL: 15% of qualifiers, 21% of semi-finalists, two titles. Just two semi-finalists in the pool came from outside those two blocs — <b>South Korea</b> (2002) and <b>Morocco</b> (2022) — and CONCACAF and OFC reached zero semi-finals across all seven editions.</p>`;return;}
+  const tags=e.playoff.tags.map(t=>`<span class="tag">${t}</span>`).join('');
+  el.innerHTML=`<h4>Qualification &amp; inter-confederation play-offs — ${e.year}</h4><p>${e.playoff.note}</p><div>${tags}</div>`;
+}
+
+/* ============================ COMPARATOR ============================ */
+const LEVELS=[
+ {n:48,sub:'Field ’26'},{n:32,sub:'Field / R32'},{n:24,sub:'Field ’82–’94'},
+ {n:16,sub:'Round of 16'},{n:8,sub:'Quarter-finals'},{n:4,sub:'Semi-finals'},
+ {n:2,sub:'Final'},{n:1,sub:'Champion'}
+];
+function tierForLevel(e,level){
+  for(const t of e.order){
+    if(t==='members'||t==='direct')continue;
+    if(e.pendingFrom && e.order.indexOf(t)>=e.order.indexOf(e.pendingFrom))continue;
+    if(teamsAtTier(e,t)===level) return t;
+  }
+  return null;
+}
+const SHORT={qualified:'field',r32:'R32',r12:'2nd rd',r16:'R16',qf:'QF',sf:'SF',final:'final',winner:'champion'};
+function renderLevels(){
+  const el=document.getElementById('levels'); el.innerHTML='';
+  LEVELS.forEach(L=>{
+    const b=document.createElement('button'); b.className='lvl';
+    b.setAttribute('aria-pressed', state.level===L.n?'true':'false');
+    b.innerHTML=`${L.n}<small>${L.sub}</small>`;
+    b.onclick=()=>{state.level=L.n;renderCmp();renderLevels();};
+    el.appendChild(b);
+  });
+}
+function renderCmp(){
+  const host=document.getElementById('cmp'); host.innerHTML='';
+  const rows=ED.map(e=>({e,tier:tierForLevel(e,state.level)})).filter(r=>r.tier);
+  if(!rows.length){host.innerHTML=`<p class="cmp-empty">No edition reached this exact team count.</p>`;return;}
+  const note=document.createElement('div'); note.className='cmp-note';
+  note.textContent=`${rows.length} edition${rows.length===1?'':'s'} reached the ${state.level}-team phase — each bar is that edition's confederation mix at this level.`;
+  host.appendChild(note);
+  rows.forEach(({e,tier})=>{
+    const tot=sumTier(e,tier);
+    const row=document.createElement('div'); row.className='cmp-row';
+    row.innerHTML=`<div class="yl">${e.year}<small>${SHORT[tier]||tier}</small></div>`;
+    const bar=document.createElement('div'); bar.className='bar';
+    CK.forEach(c=>{
+      const cnt=(e.tiers[tier][c]||[]).length; if(cnt<=0)return;
+      const seg=document.createElement('div');
+      seg.className='seg-b'+(state.focus&&state.focus!==c?' faded':'');
+      seg.style.width=(cnt/tot*100)+'%'; seg.style.background=confColor(c);
+      if(cnt/tot*100>6) seg.innerHTML=`<span>${cnt}</span>`;
+      bindTT(seg,e,tier,c);
+      bar.appendChild(seg);
+    });
+    row.appendChild(bar); host.appendChild(row);
+  });
+}
+
+/* ============================ HERO MINI ============================ */
+function renderMini(){
+  const el=document.getElementById('miniFunnel'); if(!el)return;
+  const rows=[['211','FIFA members'],['46','Direct berths ’26'],['48','Qualified ’26'],['32','Round of 32'],['16','Round of 16'],['8','Quarter-finals'],['4','Semi-finals'],['2','Final'],['1','Champion']];
+  const max=211;
+  el.innerHTML=rows.map(([n,l])=>{
+    const w=Math.max(7, Math.pow(Number(n)/max,.42)*100);
+    return `<div class="mf" style="width:${w}%"><b>${n}</b>&nbsp; ${l}</div>`;
+  }).join('');
+}
+
+/* ============================ FINDINGS ============================ */
+function renderTiles(){
+  const el=document.getElementById('tiles');
+  const tiles=[
+    {n:'211',k:'FIFA member associations feed the funnel in 2026 — up from ≈150 in 1982',v:'--gold'},
+    {n:'2',k:'confederations have <b>ever</b> won a World Cup: UEFA (7) &amp; CONMEBOL (4), 1982–2022',v:'--c-uefa'},
+    {n:'75%',k:'of all semi-final berths 1982–2026 went to UEFA (33 of 44)',v:'--c-uefa'},
+    {n:'2',k:'semi-finalists in 44 came from outside UEFA/CONMEBOL: S. Korea ’02, Morocco ’22',v:'--c-caf'},
+    {n:'2',k:'OFC teams have reached the knockouts across all 12 editions — both via play-off',v:'--c-ofc'},
+    {n:'10',k:'African teams qualified for 2026 — CAF’s largest-ever contingent (was 2 in 1982)',v:'--c-caf'}
+  ];
+  el.innerHTML=tiles.map(t=>`<div class="tile"><div class="rail" style="background:${cssv(t.v)}"></div><div class="n" style="color:${cssv(t.v)}">${t.n}</div><div class="k">${t.k}</div></div>`).join('');
+}
+function renderDom(id,tally,total){
+  const el=document.getElementById(id);
+  const rows=CK.map(c=>[c,tally[c]]).filter(r=>r[1]>0).sort((a,b)=>b[1]-a[1]);
+  const max=Math.max(...rows.map(r=>r[1]));
+  el.innerHTML=rows.map(([c,v])=>{
+    const pct=Math.round(v/total*100);
+    return `<div class="domrow"><div class="dl">${c}</div><div class="dt" style="width:${Math.max(4,v/max*100)}%;background:${confColor(c)}">${v}</div><div class="dv">${pct}%</div></div>`;
+  }).join('');
+}
+
+/* ============================ WIRE UP ============================ */
+document.querySelectorAll('#valSeg button').forEach(b=>b.onclick=()=>{
+  state.val=b.dataset.val;
+  document.querySelectorAll('#valSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+  renderFunnel();
+});
+const natToggle=document.getElementById('natToggle');
+natToggle.onclick=()=>{
+  const body=document.getElementById('natBody'); const open=body.classList.toggle('open');
+  natToggle.setAttribute('aria-expanded',open?'true':'false');
+  natToggle.textContent=(open?'▾ Hide':'▸ Show')+' every qualified nation, by phase';
+  if(open)renderNations();
+};
+
+function renderInteractive(){
+  renderEditions(); renderLegend(); renderEdTitle();
+  renderFunnel(); renderTable(); renderPO();
+  if(document.getElementById('natBody').classList.contains('open'))renderNations();
+}
+function renderAll(){ renderInteractive(); renderCmp(); }
+
+function renderStatic(){ renderTiles(); renderDom('domSF',sfTally,44); renderDom('domWin',winTally,11); renderMini(); renderLevels(); }
+
+const mo=new MutationObserver(()=>{renderAll();renderStatic();});
+mo.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+matchMedia('(prefers-color-scheme:dark)').addEventListener?.('change',()=>{renderAll();renderStatic();});
+
+renderAll();
+renderStatic();
+</script>

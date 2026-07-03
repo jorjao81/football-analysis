@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany at the World Cup — xG vs Result</title>
+<style>
+  :root{--ink:#1b1b2b;--muted:#6b6b80;--line:#e6e6ef;--bg:#f6f7fb;
+    --win:#1f9d55;--loss:#d64545;--draw:#8a8a9a;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.55;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;}
+  .wrap{max-width:640px;margin:0 auto;padding:34px 20px 60px;}
+  h1{font-size:1.4rem;margin:0 0 2px}
+  .sub{color:var(--muted);font-size:.9rem;margin:0 0 22px}
+  table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);
+    border-radius:12px;overflow:hidden;font-size:.95rem;box-shadow:0 1px 6px rgba(20,20,50,.04)}
+  th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:center}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:#fbfbff}
+  tbody tr:last-child td{border-bottom:none}
+  .res{font-weight:700;white-space:nowrap}
+  .res.win{color:var(--win)} .res.loss{color:var(--loss)} .res.draw{color:var(--draw)}
+  .xg{font-variant-numeric:tabular-nums}
+  .hi{font-weight:700}
+  .yr{color:var(--muted);font-size:.82rem}
+  .ref{color:var(--loss);font-weight:700;font-size:.7rem;vertical-align:super}
+  .note{margin-top:16px;font-size:.85rem;color:#5d4a12;background:#fff8e6;
+    border:1px solid #f0e2b0;border-radius:10px;padding:11px 14px}
+  .note b{color:#5d4a12}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🇩🇪 Germany at the World Cup — xG vs Result</h1>
+  <p class="sub">Expected goals only · 2018 · 2022 · 2026 · data: Opta</p>
+  <table>
+    <thead>
+      <tr><th>Match</th><th>Result</th><th>GER xG</th><th>Opp xG</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🇲🇽 Mexico <span class="yr">’18</span></td><td class="res loss">L 0–1</td><td class="xg hi">2.2</td><td class="xg">1.3</td></tr>
+      <tr><td>🇸🇪 Sweden <span class="yr">’18</span></td><td class="res win">W 2–1</td><td class="xg">1.3</td><td class="xg">1.3</td></tr>
+      <tr><td>🇰🇷 South Korea <span class="yr">’18</span></td><td class="res loss">L 0–2</td><td class="xg hi">2.5</td><td class="xg">1.9</td></tr>
+      <tr><td>🇯🇵 Japan <span class="yr">’22</span></td><td class="res loss">L 1–2</td><td class="xg hi">3.09</td><td class="xg">1.46</td></tr>
+      <tr><td>🇪🇸 Spain <span class="yr">’22</span></td><td class="res draw">D 1–1</td><td class="xg hi">1.22</td><td class="xg">0.57</td></tr>
+      <tr><td>🇨🇷 Costa Rica <span class="yr">’22</span><span class="ref">*</span></td><td class="res win">W 4–2</td><td class="xg hi">5.77</td><td class="xg">1.33</td></tr>
+      <tr><td>🇨🇼 Curaçao <span class="yr">’26</span></td><td class="res win">W 7–1</td><td class="xg hi">3.91</td><td class="xg">0.40</td></tr>
+      <tr><td>🇨🇮 Ivory Coast <span class="yr">’26</span></td><td class="res win">W 2–1</td><td class="xg hi">1.89</td><td class="xg">1.22</td></tr>
+      <tr><td>🇪🇨 Ecuador <span class="yr">’26</span></td><td class="res loss">L 1–2</td><td class="xg">0.65</td><td class="xg hi">1.27</td></tr>
+      <tr><td>🇵🇾 Paraguay <span class="yr">’26 · R32</span></td><td class="res loss">D 1–1<br>L 4–3p</td><td class="xg hi">1.49</td><td class="xg">0.42</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><b>* Costa Rica:</b> Germany won 4–2 but were eliminated. Level on points with Spain (4), they finished third on goal difference (+1 vs Spain’s +6). Because Japan beat Spain 2–1 in the simultaneous match, beating Costa Rica wasn’t enough — Germany needed to win by about <b>eight clear goals</b> to leapfrog Spain for second place, not two.</p>
+</div>
+</body>
+</html>

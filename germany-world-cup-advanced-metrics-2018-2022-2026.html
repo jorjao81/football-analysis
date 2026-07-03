@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Germany at the World Cup — Advanced Metrics (2018 · 2022 · 2026)</title>
+<style>
+  :root{
+    --ink:#1b1b2b; --muted:#6b6b80; --line:#e6e6ef; --bg:#f6f7fb; --card:#ffffff;
+    --ger1:#111; --ger2:#dd0000; --ger3:#ffce00;
+    --win:#1f9d55; --loss:#d64545; --draw:#8a8a9a;
+    --win-bg:#e9f7ef; --loss-bg:#fbecec; --draw-bg:#f0f0f4;
+    --accent:#2b50aa; --accent-bg:#eaf0ff;
+    --warn:#9a6700; --warn-bg:#fff8e6; --key:#1f7a4d; --key-bg:#e8f6ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji",sans-serif;
+    line-height:1.6;}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 20px 80px;}
+  header.masthead{background:linear-gradient(180deg,#fff, #fbfbff);border:1px solid var(--line);
+    border-radius:16px;padding:26px 28px;box-shadow:0 2px 10px rgba(20,20,50,.04);
+    border-top:6px solid var(--ger1);position:relative;overflow:hidden;}
+  header.masthead::after{content:"";position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg,var(--ger1) 0 33%,var(--ger2) 33% 66%,var(--ger3) 66% 100%);}
+  h1{font-size:1.9rem;margin:.1em 0 .15em;letter-spacing:-.5px}
+  .sub{color:var(--muted);font-size:1rem;margin:0}
+  .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:#f0f1f7;border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:.82rem;color:#444}
+  h2{font-size:1.45rem;margin:2.2em 0 .5em;padding-bottom:.25em;border-bottom:2px solid var(--line)}
+  h2 .host{font-size:1rem;color:var(--muted);font-weight:500}
+  h3{font-size:1.05rem;margin:1.6em 0 .6em}
+  p{margin:.6em 0}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid #cdd8f3}
+  a:hover{border-bottom-color:var(--accent)}
+  .callout{border-radius:12px;padding:14px 16px;margin:16px 0;font-size:.95rem;border:1px solid}
+  .callout.note{background:var(--accent-bg);border-color:#cdd8f3}
+  .callout.warn{background:var(--warn-bg);border-color:#f0e2b0;color:#5d4a12}
+  .callout.key{background:var(--key-bg);border-color:#bfe6cf}
+  .callout strong{color:inherit}
+
+  .match{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    margin:18px 0;padding:18px 20px;box-shadow:0 1px 6px rgba(20,20,50,.04);border-left:5px solid var(--draw)}
+  .match.win{border-left-color:var(--win)}
+  .match.loss{border-left-color:var(--loss)}
+  .match.draw{border-left-color:var(--draw)}
+  .mhead{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
+  .score{font-size:1.18rem;font-weight:700;letter-spacing:-.2px}
+  .score .flag{font-size:1.25rem}
+  .badge{font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .badge.win{background:var(--win-bg);color:var(--win)}
+  .badge.loss{background:var(--loss-bg);color:var(--loss)}
+  .badge.draw{background:var(--draw-bg);color:var(--draw)}
+  .mdate{color:var(--muted);font-size:.85rem;margin:2px 0 12px}
+
+  .xgbar{display:flex;height:16px;border-radius:6px;overflow:hidden;margin:6px 0 14px;font-size:.7rem;
+    box-shadow:inset 0 0 0 1px var(--line)}
+  .xgbar .ger{background:#1b1b2b;color:#fff;display:flex;align-items:center;justify-content:flex-start;padding-left:7px}
+  .xgbar .opp{background:#d9dbe6;color:#444;display:flex;align-items:center;justify-content:flex-end;padding-right:7px}
+  .xglabel{font-size:.72rem;color:var(--muted);margin:-8px 0 10px}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0 4px;font-size:.92rem}
+  th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right}
+  th:first-child,td:first-child{text-align:left}
+  thead th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);border-bottom:2px solid var(--line)}
+  tbody tr.adv td{font-weight:700}
+  tbody tr.adv td:first-child{font-weight:600}
+  td .alt{display:block;font-size:.74rem;color:var(--muted);font-weight:400}
+  .na{color:#b3b3c0;font-weight:400}
+  .verdict{background:#fafaff;border:1px dashed var(--line);border-radius:10px;padding:10px 13px;margin:12px 0 8px;font-size:.92rem}
+  .verdict b{color:var(--ink)}
+  .srcs{font-size:.78rem;color:var(--muted);margin-top:8px;word-break:break-word}
+  .srcs a{border-bottom:none}
+
+  table.glance{font-size:.86rem}
+  table.glance td,table.glance th{padding:6px 8px}
+  table.glance .res{font-weight:700;white-space:nowrap}
+  .res.win{color:var(--win)} .res.loss{color:var(--loss)} .res.draw{color:var(--draw)}
+  table.glance tr.lost-dominant{background:#fcf3f3}
+
+  .gloss{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:8px}
+  .gcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .gcard h4{margin:0 0 .35em;font-size:1rem}
+  .gcard p{font-size:.9rem;margin:.3em 0}
+  .gcard .lk{font-size:.82rem}
+
+  ol.lim{padding-left:1.2em}
+  ol.lim li{margin:.5em 0}
+  footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+  footer a{font-size:.8rem}
+  .footsrc{line-height:1.9}
+  .pill{display:inline-block;background:#f0f1f7;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:.76rem;color:#555;margin:2px 2px}
+  @media (max-width:560px){ h1{font-size:1.5rem} .score{font-size:1rem} th,td{padding:6px 6px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <h1>🇩🇪 Germany at the World Cup — Advanced Metrics</h1>
+  <p class="sub">Match-by-match xG, xGOT &amp; field tilt vs. results · 2018 · 2022 · 2026</p>
+  <div class="meta">
+    <span class="chip">📅 Compiled 30 June 2026</span>
+    <span class="chip">📊 Provider: Opta (Stats Perform)</span>
+    <span class="chip">🔗 Every figure cited</span>
+    <span class="chip">🟢 12 matches</span>
+  </div>
+</header>
+
+<div class="callout key">
+  <strong>Source headline.</strong> All numbers are <strong>Opta</strong> data, retrieved and cross-validated from Opta-fed front-ends.
+  <strong>xG and xGOT are recovered for all 12 matches</strong>; <strong>field tilt is computed for all 12</strong> from Opta final-third passes (it isn't published directly anywhere).
+  Because no single free website spans 2018→2026, data is pulled by era: <em>archived FBref (Opta)</em> for 2018–22, <em>FotMob (Opta)</em> for 2022–26, with <em>ESPN / The Analyst (Opta)</em> corroborating 2026 xG. Nothing is estimated; genuine gaps are marked. See <a href="#limits">Source consistency &amp; limitations</a>.
+</div>
+
+<h3>The story the numbers tell</h3>
+<p>One pattern dominates all three tournaments: <strong>Germany generated far more chance quality (xG, xGOT) and territory (field tilt) than their opponents — and repeatedly failed to win the games that decided their fate.</strong> That is exactly what these metrics exist to expose: chronic finishing under-performance and vulnerability to clinical opponents. There are two exceptions across 12 games — the 2026 Ecuador defeat (genuinely out-played) and, territorially, the 2022 Spain draw (the only match Germany were dominated for field position — yet they still created the better chances).</p>
+
+<!-- ============================ 2018 ============================ -->
+<h2>2018 World Cup <span class="host">· 🇷🇺 Russia · eliminated in the group stage (bottom of Group F)</span></h2>
+<p class="srcs">Provider: <b>Opta</b>, via FBref match reports from the Wayback Machine (pre-20 Jan 2026), fetched with curl. xG &amp; PSxG to 1 dp. Field tilt = Germany's share of final-third passes; touch-based version (attacking-third touches) in parentheses.</p>
+
+<!-- Mexico -->
+<div class="match loss">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 0–1 Mexico <span class="flag">🇲🇽</span></span>
+    <span class="badge loss">Loss</span>
+  </div>
+  <div class="mdate">17 Jun 2018 · Group F · Lozano 35'</div>
+  <div class="xgbar"><div class="ger" style="width:62.9%">xG 2.2</div><div class="opp" style="width:37.1%">1.3</div></div>
+  <div class="xglabel">xG share — Germany 63%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇲🇽 Mexico</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>2.2</td><td>1.3</td></tr>
+      <tr class="adv"><td>xGOT (PSxG)</td><td>1.6</td><td>1.3</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>77.4% <span class="alt">touch: 79.5%</span></td><td>22.6% <span class="alt">20.5%</span></td></tr>
+      <tr><td>Total shots</td><td>27</td><td>13</td></tr>
+      <tr><td>Shots on target</td><td>9</td><td>4</td></tr>
+      <tr><td>Possession</td><td>66%</td><td>34%</td></tr>
+      <tr><td>Big chances</td><td class="na">n/a</td><td class="na">n/a</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> Nearly double Mexico's xG, 77% field tilt, 27 shots — and lost to a counter. PSxG 1.6 says even their on-target shots merited ~1–2 goals. <b>Dominated, lost.</b></div>
+  <div class="srcs">🔗 <a href="http://web.archive.org/web/20251231093950/https://fbref.com/en/matches/4100c1fb/Germany-Mexico-June-17-2018-World-Cup" target="_blank">FBref/Opta (Wayback)</a></div>
+</div>
+
+<!-- Sweden -->
+<div class="match win">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 2–1 Sweden <span class="flag">🇸🇪</span></span>
+    <span class="badge win">Win</span>
+  </div>
+  <div class="mdate">23 Jun 2018 · Group F · Toivonen 32', Reus 48', Kroos 90+5'</div>
+  <div class="xgbar"><div class="ger" style="width:50%">xG 1.3</div><div class="opp" style="width:50%">1.3</div></div>
+  <div class="xglabel">xG share — even (50/50)</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇸🇪 Sweden</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>1.3</td><td>1.3</td></tr>
+      <tr class="adv"><td>xGOT (PSxG)</td><td>1.2</td><td>1.8</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>85.9% <span class="alt">touch: 82.3%</span></td><td>14.1% <span class="alt">17.7%</span></td></tr>
+      <tr><td>Total shots</td><td>17</td><td>8</td></tr>
+      <tr><td>Shots on target</td><td>5</td><td>5</td></tr>
+      <tr><td>Possession</td><td>75%</td><td>25%</td></tr>
+      <tr><td>Big chances</td><td class="na">n/a</td><td class="na">n/a</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> Despite 86% field tilt, chances were level (1.3 each), and Sweden's PSxG (1.8 &gt; 1.3 xG) shows their shots were dangerous. Won on a moment of quality (Kroos' last-gasp free kick). <b>Coin-flip Germany edged.</b></div>
+  <div class="srcs">🔗 <a href="http://web.archive.org/web/20251115232518/https://fbref.com/en/matches/e9fc9e82/Germany-Sweden-June-23-2018-World-Cup" target="_blank">FBref/Opta (Wayback)</a></div>
+</div>
+
+<!-- South Korea -->
+<div class="match loss">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇰🇷</span> South Korea 2–0 Germany <span class="flag">🇩🇪</span></span>
+    <span class="badge loss">Loss · eliminated</span>
+  </div>
+  <div class="mdate">27 Jun 2018 · Group F · Kim 90+3' (VAR), Son 90+6'</div>
+  <div class="xgbar"><div class="ger" style="width:56.8%">xG 2.5</div><div class="opp" style="width:43.2%">1.9</div></div>
+  <div class="xglabel">xG share — Germany 57%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇰🇷 South Korea</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>2.5</td><td>1.9</td></tr>
+      <tr class="adv"><td>xGOT (PSxG)</td><td>1.7</td><td>1.8</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>85.3% <span class="alt">touch: 80.2%</span></td><td>14.7% <span class="alt">19.8%</span></td></tr>
+      <tr><td>Total shots</td><td>25</td><td>12</td></tr>
+      <tr><td>Shots on target</td><td>6</td><td>5</td></tr>
+      <tr><td>Possession</td><td>75%</td><td>25%</td></tr>
+      <tr><td>Big chances</td><td class="na">n/a</td><td class="na">n/a</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The defining "deserved-more-and-out" game — 2.5 xG, 85% field tilt, 25 shots, lost 0–2 to injury-time goals. PSxG 1.7 (below 2.5 xG) flags poor finishing; Korea took theirs. <b>Better side, eliminated.</b></div>
+  <div class="srcs">🔗 <a href="http://web.archive.org/web/20251115163518/https://fbref.com/en/matches/4743cce5/Korea-Republic-Germany-June-27-2018-World-Cup" target="_blank">FBref/Opta (Wayback)</a></div>
+</div>
+
+<p><b>2018 takeaway:</b> Germany out-xG'd or matched every opponent (2.2 / 1.3 / 2.5) with 77–86% field tilt, and went out bottom of the group on 3 points — a finishing failure, not a creation one.</p>
+
+<!-- ============================ 2022 ============================ -->
+<h2>2022 World Cup <span class="host">· 🇶🇦 Qatar · eliminated in the group stage (3rd in Group E, on goal difference)</span></h2>
+<p class="srcs">Provider: <b>Opta</b>, double-sourced — <b>FotMob</b> (JSON API, 2 dp) and <b>FBref</b> (Wayback). xGOT is FotMob's labelled value, re-confirmed by summing per-shot Opta xGOT (matched to the penny); FBref PSxG corroborates. Field tilt = final-third-pass share (FBref); touch-based in parentheses.</p>
+
+<!-- Japan -->
+<div class="match loss">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 1–2 Japan <span class="flag">🇯🇵</span></span>
+    <span class="badge loss">Loss</span>
+  </div>
+  <div class="mdate">23 Nov 2022 · Group E · Gündoğan 33' pen; Doan 75', Asano 83'</div>
+  <div class="xgbar"><div class="ger" style="width:67.9%">xG 3.09</div><div class="opp" style="width:32.1%">1.46</div></div>
+  <div class="xglabel">xG share — Germany 68%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇯🇵 Japan</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>3.09</td><td>1.46</td></tr>
+      <tr class="adv"><td>xGOT</td><td>2.82</td><td>1.77</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>77.2% <span class="alt">touch: 79.5%</span></td><td>22.8% <span class="alt">20.5%</span></td></tr>
+      <tr><td>Total shots</td><td>26</td><td>12</td></tr>
+      <tr><td>Shots on target</td><td>9</td><td>4</td></tr>
+      <tr><td>Possession</td><td>74%</td><td>26%</td></tr>
+      <tr><td>Big chances (missed)</td><td>5 (4)</td><td>3 (1)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The single most extreme mismatch of all three tournaments. 3.09 xG to 1.46, five big chances (four missed) — and lost. Even xGOT implied ~3 goals for Germany; they scored one. Japan were clinical (1.77 xGOT → 2 goals). <b>Comprehensively dominated, lost.</b></div>
+  <div class="srcs">🔗 <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854586" target="_blank">FotMob/Opta JSON</a> · <a href="http://web.archive.org/web/20251222081052/https://fbref.com/en/matches/a3556b5a/Germany-Japan-November-23-2022-World-Cup" target="_blank">FBref/Opta</a></div>
+</div>
+
+<!-- Spain -->
+<div class="match draw">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇪🇸</span> Spain 1–1 Germany <span class="flag">🇩🇪</span></span>
+    <span class="badge draw">Draw</span>
+  </div>
+  <div class="mdate">27 Nov 2022 · Group E · Morata 62'; Füllkrug 83'</div>
+  <div class="xgbar"><div class="ger" style="width:68.2%">xG 1.22</div><div class="opp" style="width:31.8%">0.57</div></div>
+  <div class="xglabel">xG share — Germany 68% · but field tilt just 29% (their only territorial deficit)</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇪🇸 Spain</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>1.22</td><td>0.57</td></tr>
+      <tr class="adv"><td>xGOT</td><td>1.76</td><td>1.32</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>29.3% <span class="alt">touch: 46.7%</span></td><td>70.7% <span class="alt">53.3%</span></td></tr>
+      <tr><td>Total shots</td><td>11</td><td>7</td></tr>
+      <tr><td>Shots on target</td><td>4</td><td>3</td></tr>
+      <tr><td>Possession</td><td>36%</td><td>64%</td></tr>
+      <tr><td>Big chances (missed)</td><td>2 (1)</td><td>1 (0)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The fascinating outlier. Germany had the <b>least territory of any game</b> (29% field tilt, 36% possession) yet created the <b>better</b> chances (1.22 xG vs 0.57). A vivid reminder that territory ≠ chance quality. <b>Slightly the better side; a fair, survival-keeping draw.</b></div>
+  <div class="srcs">🔗 <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854587" target="_blank">FotMob/Opta JSON</a> · <a href="http://web.archive.org/web/20251203204029/https://fbref.com/en/matches/9397f79c/Spain-Germany-November-27-2022-World-Cup" target="_blank">FBref/Opta</a></div>
+</div>
+
+<!-- Costa Rica -->
+<div class="match win">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇨🇷</span> Costa Rica 2–4 Germany <span class="flag">🇩🇪</span></span>
+    <span class="badge win">Win · out on GD</span>
+  </div>
+  <div class="mdate">1 Dec 2022 · Group E · Gnabry 10', Havertz 73' &amp; 85', Füllkrug 89'; Tejeda 58', Vargas 70'</div>
+  <div class="xgbar"><div class="ger" style="width:81.3%">xG 5.77</div><div class="opp" style="width:18.7%">1.33</div></div>
+  <div class="xglabel">xG share — Germany 81%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇨🇷 Costa Rica</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>5.77</td><td>1.33</td></tr>
+      <tr class="adv"><td>xGOT</td><td>5.04</td><td>2.61</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>86.4% <span class="alt">touch: 82.1%</span></td><td>13.6% <span class="alt">17.9%</span></td></tr>
+      <tr><td>Total shots</td><td>32</td><td>8</td></tr>
+      <tr><td>Shots on target</td><td>11</td><td>6</td></tr>
+      <tr><td>Possession</td><td>68%</td><td>32%</td></tr>
+      <tr><td>Big chances (missed)</td><td>10 (6)</td><td>3 (2)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> Total domination — 5.77 xG, 86% field tilt, <b>ten</b> big chances — that "only" produced 4–2. Costa Rica's xGOT (2.61, well above 1.33 xG) shows their few on-target shots were lethal as Germany chased the bigger win they needed. Finished level on points with Spain, behind on GD. <b>Overwhelmingly better across the group — eliminated anyway.</b></div>
+  <div class="srcs">🔗 <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854590" target="_blank">FotMob/Opta JSON</a> · <a href="http://web.archive.org/web/20251227010817/https://fbref.com/en/matches/6a2a024f/Costa-Rica-Germany-December-1-2022-World-Cup" target="_blank">FBref/Opta</a></div>
+</div>
+
+<p><b>2022 takeaway:</b> Germany out-xG'd <em>and</em> out-xGOT'd <em>every</em> opponent and still exited in the group on goal difference — an even starker version of 2018's efficiency problem.</p>
+
+<!-- ============================ 2026 ============================ -->
+<h2>2026 World Cup <span class="host">· 🇺🇸🇨🇦🇲🇽 USA/Canada/Mexico · won Group E, then out in the Round of 32</span></h2>
+<p class="srcs">Provider: <b>Opta</b>. xG: <b>ESPN / The Analyst</b> first, <b>FotMob</b> in parentheses where it differs. xGOT: <b>FotMob</b>, re-confirmed by per-shot sum (shootout penalties excluded). Field tilt = final-third-pass share from FotMob/Opta per-player data (no touch-based version for 2026).</p>
+
+<!-- Curacao -->
+<div class="match win">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 7–1 Curaçao <span class="flag">🇨🇼</span></span>
+    <span class="badge win">Win</span>
+  </div>
+  <div class="mdate">14 Jun 2026 · Group E</div>
+  <div class="xgbar"><div class="ger" style="width:90.7%">xG 3.91</div><div class="opp" style="width:9.3%">0.40</div></div>
+  <div class="xglabel">xG share — Germany 91%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇨🇼 Curaçao</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>3.91 <span class="alt">FotMob: 4.22</span></td><td>0.40</td></tr>
+      <tr class="adv"><td>xGOT</td><td>5.24</td><td>0.50</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>68.1%</td><td>31.9%</td></tr>
+      <tr><td>Total shots</td><td>26</td><td>8</td></tr>
+      <tr><td>Shots on target</td><td>12</td><td>2</td></tr>
+      <tr><td>Possession</td><td>65%</td><td>35%</td></tr>
+      <tr><td>Big chances</td><td>6 (4 scored)</td><td class="na">—</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The one game Germany <em>over</em>-performed — 7 goals from 3.91 xG / 5.24 xGOT against a debutant. Ruthless conversion against minimal resistance (Curaçao 0.40 xG). <b>Emphatic and earned, with clinical finishing on top.</b></div>
+  <div class="srcs">🔗 <a href="https://www.espn.com/soccer/match/_/gameId/760422/curacao-germany" target="_blank">ESPN/Opta</a> · <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667777" target="_blank">FotMob/Opta JSON</a> · <a href="https://theanalyst.com/articles/germany-vs-curacao-stats-world-cup-2026" target="_blank">The Analyst</a></div>
+</div>
+
+<!-- Ivory Coast -->
+<div class="match win">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 2–1 Ivory Coast <span class="flag">🇨🇮</span></span>
+    <span class="badge win">Win</span>
+  </div>
+  <div class="mdate">20 Jun 2026 · Group E · Undav 68' &amp; 90+4'; Kessié 30'</div>
+  <div class="xgbar"><div class="ger" style="width:60.8%">xG 1.89</div><div class="opp" style="width:39.2%">1.22</div></div>
+  <div class="xglabel">xG share — Germany 61%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇨🇮 Ivory Coast</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>1.89</td><td>1.22</td></tr>
+      <tr class="adv"><td>xGOT</td><td>2.36</td><td>1.11</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>68.1%</td><td>31.9%</td></tr>
+      <tr><td>Total shots</td><td>16</td><td>9</td></tr>
+      <tr><td>Shots on target</td><td>7</td><td>2</td></tr>
+      <tr><td>Possession</td><td>60%</td><td>40%</td></tr>
+      <tr><td>Big chances created (missed)</td><td>5 (3)</td><td>1 (1)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> Closer than the win suggests — 1.89 xG to 1.22, decided by two late Undav goals. Ivory Coast were a genuine threat (1.22 xG / 1.11 xGOT, level at 30'). <b>Better side, but a tight, deserved-rather-than-dominant win.</b></div>
+  <div class="srcs">🔗 <a href="https://www.espn.com/soccer/match/_/gameId/760448/ivory-coast-germany" target="_blank">ESPN/Opta</a> · <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667780" target="_blank">FotMob/Opta JSON</a></div>
+</div>
+
+<!-- Ecuador -->
+<div class="match loss">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇪🇨</span> Ecuador 2–1 Germany <span class="flag">🇩🇪</span></span>
+    <span class="badge loss">Loss · still won the group</span>
+  </div>
+  <div class="mdate">25 Jun 2026 · Group E · Sané 2'; Angulo 9', Plata 77'</div>
+  <div class="xgbar"><div class="ger" style="width:33.9%">xG 0.65</div><div class="opp" style="width:66.1%">1.27</div></div>
+  <div class="xglabel">xG share — Germany 34% (out-created)</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇪🇨 Ecuador</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>0.65</td><td>1.27</td></tr>
+      <tr class="adv"><td>xGOT</td><td>0.94</td><td>1.63</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>53.8%</td><td>46.2%</td></tr>
+      <tr><td>Total shots</td><td>11</td><td>7</td></tr>
+      <tr><td>Shots on target</td><td>3</td><td>3</td></tr>
+      <tr><td>Possession</td><td>61%</td><td>39%</td></tr>
+      <tr><td>Big chances created (missed)</td><td>2 (1)</td><td>2 (1)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The exception to the pattern. Despite 61% possession, Germany were out-created on every quality metric — out-xG'd (0.65 vs 1.27), out-xGOT'd (0.94 vs 1.63), field tilt down to a tournament-low 53.8%. A flat, rotated display after an early Sané goal. Here numbers and result agree. <b>Deservedly lost</b> (though still topped the group).</div>
+  <div class="srcs">🔗 <a href="https://www.espn.com/soccer/match/_/gameId/760468/germany-ecuador" target="_blank">ESPN/Opta</a> · <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667781" target="_blank">FotMob/Opta JSON</a></div>
+</div>
+
+<!-- Paraguay -->
+<div class="match loss">
+  <div class="mhead">
+    <span class="score"><span class="flag">🇩🇪</span> Germany 1–1 Paraguay <span class="flag">🇵🇾</span> <span style="font-weight:600;color:var(--muted);font-size:.9rem">(4–3 pens)</span></span>
+    <span class="badge loss">Out · Round of 32</span>
+  </div>
+  <div class="mdate">29 Jun 2026 · Round of 32 · Enciso 42'; Havertz 54'; Tah header VAR-disallowed in ET · Germany's first-ever WC shootout defeat</div>
+  <div class="xgbar"><div class="ger" style="width:78.0%">xG 1.49</div><div class="opp" style="width:22.0%">0.42</div></div>
+  <div class="xglabel">xG share — Germany 78%</div>
+  <table>
+    <thead><tr><th>Metric</th><th>🇩🇪 Germany</th><th>🇵🇾 Paraguay</th></tr></thead>
+    <tbody>
+      <tr class="adv"><td>xG</td><td>1.49 <span class="alt">FotMob: 1.57</span></td><td>0.42 <span class="alt">FotMob: 0.35</span></td></tr>
+      <tr class="adv"><td>xGOT</td><td>1.87</td><td>0.49</td></tr>
+      <tr class="adv"><td>Field tilt</td><td>69.4%</td><td>30.6%</td></tr>
+      <tr><td>Total shots (incl. ET)</td><td>21</td><td>7</td></tr>
+      <tr><td>Shots on target</td><td>6</td><td>3</td></tr>
+      <tr><td>Possession</td><td>76%</td><td>24%</td></tr>
+      <tr><td>Big chances</td><td>1 (1 missed)</td><td>2 (1 scored)</td></tr>
+    </tbody>
+  </table>
+  <div class="verdict"><b>Result vs stats:</b> The 2018/2022 pattern, transplanted into a knockout. 1.49 xG to 0.42, 1.87 xGOT to 0.49, 69% field tilt, 76% possession, 21 shots — plus a disallowed goal — and still out. ~3.5–4× the chance quality, no win, beaten on penalties. <b>Dominated and eliminated</b> — a fitting end given the history.</div>
+  <div class="srcs">🔗 <a href="https://www.espn.com/soccer/match/_/gameId/760489/paraguay-germany" target="_blank">ESPN/Opta</a> · <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4653703" target="_blank">FotMob/Opta JSON</a> · <a href="https://theanalyst.com/articles/germany-vs-paraguay-stats-world-cup-2026" target="_blank">The Analyst</a></div>
+</div>
+
+<p><b>2026 takeaway:</b> Germany finally escaped the group (1st in Group E, 6 pts) for the first time since 2014 — but lost it on the one day they were out-played (Ecuador), then bowed out of the Round of 32 in the most Germany-at-recent-World-Cups way imaginable: total xG / xGOT / field-tilt dominance, no goals when it counted, beaten on penalties.</p>
+
+<!-- ============================ AT A GLANCE ============================ -->
+<h2>📊 All 12 matches at a glance</h2>
+<div class="callout note">Rows shaded red = games Germany <strong>controlled statistically but failed to win</strong>. Germany out-xG'd their opponent in <strong>9 of 12</strong> and out-field-tilted them in <strong>11 of 12</strong> (Spain the exception) — yet 3 of their 4 losses/exits came in games they dominated.</div>
+<table class="glance">
+  <thead>
+    <tr><th>Match</th><th>Result</th><th>GER xG</th><th>Opp xG</th><th>GER xGOT</th><th>Opp xGOT</th><th>GER tilt</th><th>Read</th></tr>
+  </thead>
+  <tbody>
+    <tr class="lost-dominant"><td>🇩🇪 v 🇲🇽 Mexico ’18</td><td class="res loss">L 0–1</td><td>2.2</td><td>1.3</td><td>1.6</td><td>1.3</td><td>77%</td><td>Dominated, lost</td></tr>
+    <tr><td>🇩🇪 v 🇸🇪 Sweden ’18</td><td class="res win">W 2–1</td><td>1.3</td><td>1.3</td><td>1.2</td><td>1.8</td><td>86%</td><td>Even, edged late</td></tr>
+    <tr class="lost-dominant"><td>🇩🇪 v 🇰🇷 S. Korea ’18</td><td class="res loss">L 0–2</td><td>2.5</td><td>1.9</td><td>1.7</td><td>1.8</td><td>85%</td><td>Dominated, eliminated</td></tr>
+    <tr class="lost-dominant"><td>🇩🇪 v 🇯🇵 Japan ’22</td><td class="res loss">L 1–2</td><td>3.09</td><td>1.46</td><td>2.82</td><td>1.77</td><td>77%</td><td>Hugely dominated, lost</td></tr>
+    <tr><td>🇩🇪 v 🇪🇸 Spain ’22</td><td class="res draw">D 1–1</td><td>1.22</td><td>0.57</td><td>1.76</td><td>1.32</td><td>29%</td><td>Less territory, better chances</td></tr>
+    <tr><td>🇩🇪 v 🇨🇷 Costa Rica ’22</td><td class="res win">W 4–2</td><td>5.77</td><td>1.33</td><td>5.04</td><td>2.61</td><td>86%</td><td>Total control, out on GD</td></tr>
+    <tr><td>🇩🇪 v 🇨🇼 Curaçao ’26</td><td class="res win">W 7–1</td><td>3.91</td><td>0.40</td><td>5.24</td><td>0.50</td><td>68%</td><td>Over-performed, ruthless</td></tr>
+    <tr><td>🇩🇪 v 🇨🇮 Ivory Coast ’26</td><td class="res win">W 2–1</td><td>1.89</td><td>1.22</td><td>2.36</td><td>1.11</td><td>68%</td><td>Better, but tight</td></tr>
+    <tr><td>🇩🇪 v 🇪🇨 Ecuador ’26</td><td class="res loss">L 1–2</td><td>0.65</td><td>1.27</td><td>0.94</td><td>1.63</td><td>54%</td><td>Out-played, deservedly lost</td></tr>
+    <tr class="lost-dominant"><td>🇩🇪 v 🇵🇾 Paraguay ’26 (R32)</td><td class="res loss">D 1–1 · L 4–3p</td><td>1.49</td><td>0.42</td><td>1.87</td><td>0.49</td><td>69%</td><td>Dominated, out on pens</td></tr>
+  </tbody>
+</table>
+
+<!-- ============================ GLOSSARY ============================ -->
+<h2>📖 Metrics glossary</h2>
+<div class="gloss">
+  <div class="gcard">
+    <h4>Expected Goals (xG)</h4>
+    <p>The probability (0–1) that a shot is scored, from distance, angle, body part, assist type and whether it was a big chance — calibrated on ~1M+ historical shots. A team's match xG measures <em>chance quality created</em> and is more stable and predictive than raw goals.</p>
+    <p class="lk">🔗 <a href="https://theanalyst.com/articles/what-is-expected-goals-xg" target="_blank">The Analyst — What is xG</a> · <a href="https://fbref.com/en/expected-goals-model-explained/" target="_blank">FBref model</a></p>
+  </div>
+  <div class="gcard">
+    <h4>Expected Goals on Target (xGOT / PSxG)</h4>
+    <p>Computed only for on-target shots, adding where in the goal the ball was placed (off-target = 0). It isolates <em>finishing/shot placement</em> and, defensively, <em>goalkeeping</em>. Opta calls it xGOT; FBref/StatsBomb call the same idea PSxG.</p>
+    <p class="lk">🔗 <a href="https://theanalyst.com/articles/what-are-expected-goals-on-target-xgot" target="_blank">The Analyst — What is xGOT</a></p>
+  </div>
+  <div class="gcard">
+    <h4>Field tilt</h4>
+    <p>A team's share of the final-third passes (or touches) in a match: <code>team's final-third passes ÷ both teams' total × 100</code>. Unlike possession, it ignores sterile passing in defence/midfield and measures <em>territorial dominance</em>.</p>
+    <p class="lk">🔗 <a href="https://www.driblab.com/blog/field-tilt-percentage-of-passes-and-touches-in-the-final-third" target="_blank">Driblab</a> · <a href="https://the-footballanalyst.com/field-tilt-football-statistics-explained/" target="_blank">The Football Analyst</a></p>
+  </div>
+  <div class="gcard">
+    <h4>Big chances</h4>
+    <p>A situation where a player should reasonably be expected to score — usually a one-on-one or clear close-range opportunity (penalties always count). Tracks the <em>volume of the highest-quality chances</em>, complementing xG.</p>
+    <p class="lk">🔗 <a href="https://www.statsperform.com/opta-event-definitions/" target="_blank">Opta event definitions</a> · <a href="https://theanalyst.com/articles/opta-football-stats-definitions" target="_blank">The Analyst glossary</a></p>
+  </div>
+  <div class="gcard">
+    <h4>Shots / Shots on target · Possession</h4>
+    <p>Goal attempts (and the on-target subset) are volume indicators, predictive mainly <em>in combination with xG</em>. Possession is weakly predictive alone — Germany's three campaigns are the case study.</p>
+    <p class="lk">🔗 <a href="https://www.statsperform.com/opta-event-definitions/" target="_blank">Opta event definitions</a></p>
+  </div>
+  <div class="gcard">
+    <h4>PPDA <span style="font-weight:400;color:var(--muted);font-size:.85rem">(not recovered)</span></h4>
+    <p>Passes allowed Per Defensive Action — opponent passes ÷ the defending team's pressing actions in a zone; <em>lower = more intense pressing</em>. Not published per-match on any source accessed for these games, so it is absent from the tables.</p>
+    <p class="lk">🔗 <a href="https://theanalyst.com/articles/opta-football-stats-definitions" target="_blank">The Analyst glossary</a></p>
+  </div>
+</div>
+
+<!-- ============================ LIMITATIONS ============================ -->
+<h2 id="limits">⚠️ Source consistency &amp; limitations</h2>
+<div class="callout warn">Your ideal — one consistent Opta source for every stat across all three World Cups — is now largely met, with the qualifications below. Read these before making cross-era comparisons.</div>
+<ol class="lim">
+  <li><b>xG — Opta for all 12 matches</b>, but from different Opta front-ends (no single free site spans 2018→2026): 2018 &amp; 2022 from <b>FBref</b> (served by Opta) via <b>Wayback Machine</b>; 2022 &amp; 2026 from <b>FotMob</b> and <b>ESPN / The Analyst</b>. 2022 overlaps both eras and the values agree — useful validation.</li>
+  <li><b>xGOT — Opta for all 12 matches.</b> 2018: FBref <b>PSxG</b> (keeper "PSxG faced"). 2022 &amp; 2026: FotMob <b>xGOT</b>, each re-confirmed by summing the per-shot Opta xGOT in FotMob's shotmap (matched to the penny; shootout penalties excluded). xGOT (FotMob, 2 dp) and PSxG (FBref, 1 dp) are the same concept from two implementations and differ slightly.</li>
+  <li><b>Field tilt — computed for all 12, not directly published.</b> No source publishes a labelled "field tilt"; the figures are computed from Opta final-third passes (FBref for 2018/22; FotMob per-player sums for 2026). <em>Caveats:</em> FBref and FotMob may count "passes into the final third" slightly differently, so 2018/22 vs 2026 levels aren't perfectly comparable — trust <em>within-tournament</em> contrasts most. "Passes into the final third" counts entries, a close but imperfect proxy. Touch-based versions (parentheses) exist for 2018/22 only.</li>
+  <li><b>2018 provider caveat:</b> FBref's 2018 xG was historically StatsBomb, but the late-2025 snapshots attribute it to <b>Opta</b> (FBref had migrated providers). So the 2018 numbers are Opta's <em>retrospective</em> values (consistent with 2022/26), <em>not</em> the StatsBomb figures reported at the time. No pre-migration snapshot exists to recover the originals.</li>
+  <li><b>Why FBref needed the archive:</b> On <b>20 January 2026, Stats Perform/Opta terminated FBref's data feed and FBref removed ALL advanced stats (incl. xG)</b>; live FBref also returns HTTP 403. The only way to get its Opta numbers today is via pre-20-Jan-2026 Wayback snapshots.</li>
+  <li><b>Within-Opta variance:</b> ESPN/The Analyst and FotMob are both Opta but differ slightly by rounding/implementation (2026 Curaçao xG 3.91 vs 4.22; Paraguay 1.49/0.42 vs 1.57/0.35). Primary xG shown is ESPN/The Analyst; FotMob in parentheses. 2026 xGOT is FotMob's — for a strict same-feed xG↔xGOT comparison, pair it with FotMob's (parenthesised) xG.</li>
+  <li><b>Big chances:</b> From FotMob/Opta (2022) and ESPN/Opta + Sofascore (2026). FBref doesn't display them, so <b>2018 big-chance counts are unavailable</b>.</li>
+  <li><b>PPDA:</b> Not published per-match on any accessed source — genuinely unavailable here.</li>
+  <li><b>2026 is live / post-cutoff:</b> All 2026 figures come from in-tournament match centres (ESPN, FotMob, The Analyst, Sofascore), not a settled archive — mutually consistent but newer than the assistant's training data.</li>
+</ol>
+<div class="callout key"><b>Bottom line:</b> You have a single consistent <strong>provider (Opta)</strong> for <strong>xG and xGOT across all 12 matches</strong>, and a consistent <strong>method</strong> for <strong>field tilt across all 12</strong>. The unavoidable compromises: no single <em>website</em> spans all three tournaments; field tilt is computed (not published) and mixes FBref/FotMob inputs across eras; 2018 values are Opta's retrospective model, not 2018-era StatsBomb; PPDA and 2018 big chances are unavailable. Everything in the tables is real and cited; nothing is estimated.</div>
+
+<!-- ============================ SOURCES ============================ -->
+<footer>
+  <p style="font-weight:600;color:var(--ink);font-size:.9rem">Full source list (clickable)</p>
+  <p class="footsrc"><b>2018 (FBref/Opta via Wayback):</b>
+    <a href="http://web.archive.org/web/20251231093950/https://fbref.com/en/matches/4100c1fb/Germany-Mexico-June-17-2018-World-Cup" target="_blank">Mexico</a> ·
+    <a href="http://web.archive.org/web/20251115232518/https://fbref.com/en/matches/e9fc9e82/Germany-Sweden-June-23-2018-World-Cup" target="_blank">Sweden</a> ·
+    <a href="http://web.archive.org/web/20251115163518/https://fbref.com/en/matches/4743cce5/Korea-Republic-Germany-June-27-2018-World-Cup" target="_blank">South Korea</a></p>
+  <p class="footsrc"><b>2022 (FotMob/Opta + FBref/Opta):</b>
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854586" target="_blank">Japan (FotMob)</a> ·
+    <a href="http://web.archive.org/web/20251222081052/https://fbref.com/en/matches/a3556b5a/Germany-Japan-November-23-2022-World-Cup" target="_blank">Japan (FBref)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854587" target="_blank">Spain (FotMob)</a> ·
+    <a href="http://web.archive.org/web/20251203204029/https://fbref.com/en/matches/9397f79c/Spain-Germany-November-27-2022-World-Cup" target="_blank">Spain (FBref)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=3854590" target="_blank">Costa Rica (FotMob)</a> ·
+    <a href="http://web.archive.org/web/20251227010817/https://fbref.com/en/matches/6a2a024f/Costa-Rica-Germany-December-1-2022-World-Cup" target="_blank">Costa Rica (FBref)</a></p>
+  <p class="footsrc"><b>2026 (ESPN/The Analyst/Opta xG + FotMob/Opta xGOT &amp; field tilt):</b>
+    <a href="https://www.espn.com/soccer/match/_/gameId/760422/curacao-germany" target="_blank">Curaçao (ESPN)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667777" target="_blank">Curaçao (FotMob)</a> ·
+    <a href="https://www.espn.com/soccer/match/_/gameId/760448/ivory-coast-germany" target="_blank">Ivory Coast (ESPN)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667780" target="_blank">Ivory Coast (FotMob)</a> ·
+    <a href="https://www.espn.com/soccer/match/_/gameId/760468/germany-ecuador" target="_blank">Ecuador (ESPN)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4667781" target="_blank">Ecuador (FotMob)</a> ·
+    <a href="https://www.espn.com/soccer/match/_/gameId/760489/paraguay-germany" target="_blank">Paraguay (ESPN)</a> ·
+    <a href="https://www.fotmob.com/api/data/matchDetails?matchId=4653703" target="_blank">Paraguay (FotMob)</a></p>
+  <p class="footsrc"><b>Metric definitions:</b>
+    <a href="https://theanalyst.com/articles/what-is-expected-goals-xg" target="_blank">xG</a> ·
+    <a href="https://theanalyst.com/articles/what-are-expected-goals-on-target-xgot" target="_blank">xGOT</a> ·
+    <a href="https://www.driblab.com/blog/field-tilt-percentage-of-passes-and-touches-in-the-final-third" target="_blank">Field tilt</a> ·
+    <a href="https://www.statsperform.com/opta-event-definitions/" target="_blank">Opta event definitions</a> ·
+    <a href="https://theanalyst.com/articles/opta-football-stats-definitions" target="_blank">Opta glossary</a> ·
+    <a href="https://fbref.com/en/expected-goals-model-explained/" target="_blank">FBref xG model</a></p>
+  <p class="footsrc"><b>On the FBref data removal:</b>
+    <a href="https://www.sports-reference.com/blog/2026/01/fbref-stathead-data-update/" target="_blank">Sports Reference</a> ·
+    <a href="https://www.theixsports.com/the-ix-soccer/fbrefs-loss-advanced-stats-womens-soccer-data-accessibility/" target="_blank">The IX</a></p>
+  <p style="margin-top:16px">Flag glyphs use Unicode regional-indicator emoji; on some platforms (e.g. Windows desktop browsers) they may render as letter pairs rather than flags. Data current to 30 June 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# local Claude Code settings / permissions
+.claude/
+
+# node
+node_modules/
+npm-debug.log*
+
+# os
+.DS_Store
+Thumbs.db

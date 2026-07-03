@@ -1,0 +1,2409 @@
+{
+  "title": "World Cup Confederation Funnel — 1982–2026",
+  "description": "Every FIFA World Cup from 1982 to 2026 as a confederation funnel: FIFA members -> direct berths -> inter-confederation play-offs -> qualified field -> knockout rounds -> champion, phases aligned by teams remaining.",
+  "generated": "2026-07-03",
+  "liveNote": "2026 is in progress; data is complete through the Round of 32 (3 July 2026). Tiers at/after each edition's 'pendingFrom' key are not yet played.",
+  "confederationOrder": [
+    "UEFA",
+    "CONMEBOL",
+    "CONCACAF",
+    "CAF",
+    "AFC",
+    "OFC"
+  ],
+  "tierDefinitions": {
+    "members": {
+      "label": "FIFA members",
+      "teams": null,
+      "approx": true
+    },
+    "direct": {
+      "label": "Direct berths",
+      "teams": null
+    },
+    "playoffs": {
+      "label": "Play-off places",
+      "teams": null,
+      "special": true
+    },
+    "qualified": {
+      "label": "Qualified field",
+      "teams": "size"
+    },
+    "r32": {
+      "label": "Round of 32",
+      "teams": 32
+    },
+    "r12": {
+      "label": "Second round",
+      "teams": 12
+    },
+    "r16": {
+      "label": "Round of 16",
+      "teams": 16
+    },
+    "qf": {
+      "label": "Quarter-finals",
+      "teams": 8
+    },
+    "sf": {
+      "label": "Semi-finals",
+      "teams": 4
+    },
+    "final": {
+      "label": "Final",
+      "teams": 2
+    },
+    "winner": {
+      "label": "Champion",
+      "teams": 1
+    }
+  },
+  "confederations": [
+    {
+      "key": "UEFA",
+      "region": "Europe",
+      "cssVar": "--c-uefa",
+      "color": {
+        "light": "#1f6fb2",
+        "dark": "#4c9ad9"
+      }
+    },
+    {
+      "key": "CONMEBOL",
+      "region": "South America",
+      "cssVar": "--c-conmebol",
+      "color": {
+        "light": "#009e73",
+        "dark": "#1f9e79"
+      }
+    },
+    {
+      "key": "CONCACAF",
+      "region": "N. & C. America",
+      "cssVar": "--c-concacaf",
+      "color": {
+        "light": "#b23a82",
+        "dark": "#c95b95"
+      }
+    },
+    {
+      "key": "CAF",
+      "region": "Africa",
+      "cssVar": "--c-caf",
+      "color": {
+        "light": "#c77400",
+        "dark": "#c67f1c"
+      }
+    },
+    {
+      "key": "AFC",
+      "region": "Asia",
+      "cssVar": "--c-afc",
+      "color": {
+        "light": "#c1272d",
+        "dark": "#e5544e"
+      }
+    },
+    {
+      "key": "OFC",
+      "region": "Oceania",
+      "cssVar": "--c-ofc",
+      "color": {
+        "light": "#2c8dbf",
+        "dark": "#3391c4"
+      }
+    }
+  ],
+  "editions": [
+    {
+      "year": 1982,
+      "host": "Spain",
+      "hostConfed": "UEFA",
+      "fieldSize": 24,
+      "champion": "Italy",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r12",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 33,
+        "CONMEBOL": 10,
+        "CONCACAF": 25,
+        "CAF": 42,
+        "AFC": 34,
+        "OFC": 6
+      },
+      "directBerths": {
+        "UEFA": 14,
+        "CONMEBOL": 4,
+        "CONCACAF": 2,
+        "CAF": 2,
+        "AFC": 1,
+        "OFC": 1
+      },
+      "playoffs": [],
+      "qualificationNotes": {
+        "summary": "No inter-confederation play-offs. Asia and Oceania shared one combined qualifying zone allocated two berths (taken by Kuwait and New Zealand).",
+        "tags": [
+          "Host: Spain (auto)",
+          "Holders Argentina (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Spain",
+            "Belgium",
+            "Poland",
+            "Scotland",
+            "West Germany",
+            "Hungary",
+            "Italy",
+            "England",
+            "Northern Ireland",
+            "Soviet Union",
+            "Yugoslavia",
+            "Austria",
+            "France",
+            "Czechoslovakia"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Peru",
+            "Chile"
+          ],
+          "CONCACAF": [
+            "Honduras",
+            "El Salvador"
+          ],
+          "CAF": [
+            "Algeria",
+            "Cameroon"
+          ],
+          "AFC": [
+            "Kuwait"
+          ],
+          "OFC": [
+            "New Zealand"
+          ]
+        },
+        "r12": {
+          "UEFA": [
+            "Poland",
+            "Belgium",
+            "Soviet Union",
+            "West Germany",
+            "England",
+            "Spain",
+            "Italy",
+            "France",
+            "Austria",
+            "Northern Ireland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Poland",
+            "West Germany",
+            "Italy",
+            "France"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Italy",
+            "West Germany"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "Italy"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 1986,
+      "host": "Mexico",
+      "hostConfed": "CONCACAF",
+      "fieldSize": 24,
+      "champion": "Argentina",
+      "championConfed": "CONMEBOL",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 33,
+        "CONMEBOL": 10,
+        "CONCACAF": 26,
+        "CAF": 45,
+        "AFC": 35,
+        "OFC": 6
+      },
+      "directBerths": {
+        "UEFA": 13,
+        "CONMEBOL": 4,
+        "CONCACAF": 2,
+        "CAF": 2,
+        "AFC": 2,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "UEFA",
+              "team": "Scotland"
+            },
+            {
+              "confed": "OFC",
+              "team": "Australia"
+            }
+          ],
+          "winner": "UEFA"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "UEFA v OFC play-off: Scotland beat Australia, so the final European berth went to UEFA and Oceania sent no team. Mexico replaced Colombia as host.",
+        "tags": [
+          "Play-off +1 → UEFA (Scotland)",
+          "Host: Mexico (auto)",
+          "Holders Italy (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Italy",
+            "Poland",
+            "West Germany",
+            "Portugal",
+            "England",
+            "Northern Ireland",
+            "France",
+            "Bulgaria",
+            "Hungary",
+            "Denmark",
+            "Soviet Union",
+            "Spain",
+            "Belgium",
+            "Scotland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Uruguay",
+            "Paraguay"
+          ],
+          "CONCACAF": [
+            "Mexico",
+            "Canada"
+          ],
+          "CAF": [
+            "Algeria",
+            "Morocco"
+          ],
+          "AFC": [
+            "Iraq",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Soviet Union",
+            "Denmark",
+            "Italy",
+            "France",
+            "Spain",
+            "West Germany",
+            "England",
+            "Bulgaria",
+            "Belgium",
+            "Poland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Paraguay",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Mexico"
+          ],
+          "CAF": [
+            "Morocco"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Belgium",
+            "France",
+            "West Germany",
+            "England",
+            "Spain"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [
+            "Mexico"
+          ],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "France",
+            "West Germany",
+            "Belgium"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "West Germany"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 1990,
+      "host": "Italy",
+      "hostConfed": "UEFA",
+      "fieldSize": 24,
+      "champion": "West Germany",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 34,
+        "CONMEBOL": 10,
+        "CONCACAF": 27,
+        "CAF": 47,
+        "AFC": 36,
+        "OFC": 7
+      },
+      "directBerths": {
+        "UEFA": 14,
+        "CONMEBOL": 3,
+        "CONCACAF": 2,
+        "CAF": 2,
+        "AFC": 2,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Colombia"
+            },
+            {
+              "confed": "OFC",
+              "team": "Israel"
+            }
+          ],
+          "winner": "CONMEBOL"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "CONMEBOL v OFC play-off: Colombia beat Israel (then competing in the Oceania zone), so South America took the berth and Oceania sent no team.",
+        "tags": [
+          "Play-off +1 → CONMEBOL (Colombia)",
+          "Host: Italy (auto)",
+          "Holders Argentina (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Italy",
+            "Austria",
+            "Belgium",
+            "Czechoslovakia",
+            "England",
+            "Netherlands",
+            "Republic of Ireland",
+            "Romania",
+            "Scotland",
+            "Soviet Union",
+            "Spain",
+            "Sweden",
+            "West Germany",
+            "Yugoslavia"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Colombia",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Costa Rica",
+            "United States"
+          ],
+          "CAF": [
+            "Cameroon",
+            "Egypt"
+          ],
+          "AFC": [
+            "South Korea",
+            "United Arab Emirates"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Italy",
+            "Czechoslovakia",
+            "West Germany",
+            "Netherlands",
+            "Spain",
+            "Yugoslavia",
+            "Republic of Ireland",
+            "Romania",
+            "England",
+            "Belgium"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina",
+            "Uruguay",
+            "Colombia"
+          ],
+          "CONCACAF": [
+            "Costa Rica"
+          ],
+          "CAF": [
+            "Cameroon"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Italy",
+            "Czechoslovakia",
+            "West Germany",
+            "Republic of Ireland",
+            "England",
+            "Yugoslavia"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [
+            "Cameroon"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Italy",
+            "West Germany",
+            "England"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "West Germany"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "West Germany"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 1994,
+      "host": "United States",
+      "hostConfed": "CONCACAF",
+      "fieldSize": 24,
+      "champion": "Brazil",
+      "championConfed": "CONMEBOL",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 49,
+        "CONMEBOL": 10,
+        "CONCACAF": 30,
+        "CAF": 49,
+        "AFC": 43,
+        "OFC": 8
+      },
+      "directBerths": {
+        "UEFA": 13,
+        "CONMEBOL": 3,
+        "CONCACAF": 2,
+        "CAF": 3,
+        "AFC": 2,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Argentina"
+            },
+            {
+              "confed": "OFC",
+              "team": "Australia"
+            }
+          ],
+          "winner": "CONMEBOL"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "CONMEBOL v OFC play-off: Argentina beat Australia. Reunified Germany competed for the first time (auto-qualified as holders); the USSR had dissolved, so Russia debuted as an independent nation.",
+        "tags": [
+          "Play-off +1 → CONMEBOL (Argentina)",
+          "Host: USA (auto)",
+          "Holders Germany (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Germany",
+            "Italy",
+            "Netherlands",
+            "Belgium",
+            "Spain",
+            "Sweden",
+            "Republic of Ireland",
+            "Norway",
+            "Romania",
+            "Bulgaria",
+            "Russia",
+            "Greece",
+            "Switzerland"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina",
+            "Colombia",
+            "Bolivia"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Mexico"
+          ],
+          "CAF": [
+            "Cameroon",
+            "Nigeria",
+            "Morocco"
+          ],
+          "AFC": [
+            "South Korea",
+            "Saudi Arabia"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Germany",
+            "Italy",
+            "Netherlands",
+            "Spain",
+            "Sweden",
+            "Republic of Ireland",
+            "Romania",
+            "Bulgaria",
+            "Switzerland",
+            "Belgium"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Mexico"
+          ],
+          "CAF": [
+            "Nigeria"
+          ],
+          "AFC": [
+            "Saudi Arabia"
+          ],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Germany",
+            "Spain",
+            "Sweden",
+            "Romania",
+            "Netherlands",
+            "Italy",
+            "Bulgaria"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Italy",
+            "Bulgaria",
+            "Sweden"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Italy"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 1998,
+      "host": "France",
+      "hostConfed": "UEFA",
+      "fieldSize": 32,
+      "champion": "France",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 51,
+        "CONMEBOL": 10,
+        "CONCACAF": 31,
+        "CAF": 51,
+        "AFC": 44,
+        "OFC": 10
+      },
+      "directBerths": {
+        "UEFA": 15,
+        "CONMEBOL": 5,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 3,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "AFC",
+              "team": "Iran"
+            },
+            {
+              "confed": "OFC",
+              "team": "Australia"
+            }
+          ],
+          "winner": "AFC"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "First 32-team World Cup. AFC v OFC play-off: Iran beat Australia on away goals, so Asia took the berth and Oceania again sent no team. Host France and holders Brazil both auto-qualified.",
+        "tags": [
+          "Play-off +1 → AFC (Iran)",
+          "Host: France (auto)",
+          "Holders Brazil (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Austria",
+            "Belgium",
+            "Bulgaria",
+            "Croatia",
+            "Denmark",
+            "England",
+            "France",
+            "Germany",
+            "Italy",
+            "Netherlands",
+            "Norway",
+            "Romania",
+            "Scotland",
+            "Spain",
+            "FR Yugoslavia"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Chile",
+            "Colombia",
+            "Paraguay"
+          ],
+          "CONCACAF": [
+            "Jamaica",
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Cameroon",
+            "Morocco",
+            "Nigeria",
+            "South Africa",
+            "Tunisia"
+          ],
+          "AFC": [
+            "Iran",
+            "Japan",
+            "Saudi Arabia",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Italy",
+            "Norway",
+            "France",
+            "Denmark",
+            "Germany",
+            "Netherlands",
+            "FR Yugoslavia",
+            "Romania",
+            "Croatia",
+            "England"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Chile",
+            "Paraguay",
+            "Argentina"
+          ],
+          "CONCACAF": [
+            "Mexico"
+          ],
+          "CAF": [
+            "Nigeria"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Denmark",
+            "Netherlands",
+            "Italy",
+            "France",
+            "Germany",
+            "Croatia"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Netherlands",
+            "France",
+            "Croatia"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "France"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "France"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2002,
+      "host": "South Korea & Japan",
+      "hostConfed": "AFC",
+      "fieldSize": 32,
+      "champion": "Brazil",
+      "championConfed": "CONMEBOL",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 52,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 52,
+        "AFC": 44,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 14,
+        "CONMEBOL": 4,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 4,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "UEFA",
+              "team": "Rep. of Ireland"
+            },
+            {
+              "confed": "AFC",
+              "team": "Iran"
+            }
+          ],
+          "winner": "UEFA"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Uruguay"
+            },
+            {
+              "confed": "OFC",
+              "team": "Australia"
+            }
+          ],
+          "winner": "CONMEBOL"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "Co-hosts South Korea and Japan (both AFC) auto-qualified. UEFA v AFC play-off: Rep. of Ireland beat Iran. CONMEBOL v OFC play-off: Uruguay beat Australia. Last edition with an automatic holders’ berth (France).",
+        "tags": [
+          "Play-off +1 → UEFA (Ireland)",
+          "Play-off +1 → CONMEBOL (Uruguay)",
+          "Co-hosts Korea + Japan (AFC)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Belgium",
+            "Croatia",
+            "Denmark",
+            "England",
+            "France",
+            "Germany",
+            "Italy",
+            "Poland",
+            "Portugal",
+            "Republic of Ireland",
+            "Russia",
+            "Slovenia",
+            "Spain",
+            "Sweden",
+            "Turkey"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Ecuador",
+            "Paraguay",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Costa Rica",
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Cameroon",
+            "Nigeria",
+            "Senegal",
+            "South Africa",
+            "Tunisia"
+          ],
+          "AFC": [
+            "China PR",
+            "Japan",
+            "Saudi Arabia",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Germany",
+            "Denmark",
+            "England",
+            "Sweden",
+            "Spain",
+            "Republic of Ireland",
+            "Belgium",
+            "Turkey",
+            "Italy"
+          ],
+          "CONMEBOL": [
+            "Paraguay",
+            "Brazil"
+          ],
+          "CONCACAF": [
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Senegal"
+          ],
+          "AFC": [
+            "Japan",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Germany",
+            "Spain",
+            "England",
+            "Turkey"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [
+            "United States"
+          ],
+          "CAF": [
+            "Senegal"
+          ],
+          "AFC": [
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Germany",
+            "Turkey"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Germany"
+          ],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [],
+          "CONMEBOL": [
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2006,
+      "host": "Germany",
+      "hostConfed": "UEFA",
+      "fieldSize": 32,
+      "champion": "Italy",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 53,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 53,
+        "AFC": 46,
+        "OFC": 10
+      },
+      "directBerths": {
+        "UEFA": 14,
+        "CONMEBOL": 4,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 4,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONCACAF",
+              "team": "Trinidad & Tobago"
+            },
+            {
+              "confed": "AFC",
+              "team": "Bahrain"
+            }
+          ],
+          "winner": "CONCACAF"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "OFC",
+              "team": "Australia"
+            },
+            {
+              "confed": "CONMEBOL",
+              "team": "Uruguay"
+            }
+          ],
+          "winner": "OFC"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "AFC v CONCACAF play-off: Trinidad & Tobago beat Bahrain. OFC v CONMEBOL play-off: Australia beat Uruguay — Australia is credited to OFC here (its move to the AFC took effect 1 Jan 2006, after qualification). Holders’ auto-berth abolished from this edition.",
+        "tags": [
+          "Play-off +1 → CONCACAF (Trinidad)",
+          "Play-off +1 → OFC (Australia)",
+          "Host: Germany (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Germany",
+            "England",
+            "France",
+            "Italy",
+            "Netherlands",
+            "Portugal",
+            "Spain",
+            "Sweden",
+            "Switzerland",
+            "Ukraine",
+            "Croatia",
+            "Czech Republic",
+            "Poland",
+            "Serbia and Montenegro"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Ecuador",
+            "Paraguay"
+          ],
+          "CONCACAF": [
+            "Mexico",
+            "United States",
+            "Costa Rica",
+            "Trinidad and Tobago"
+          ],
+          "CAF": [
+            "Angola",
+            "Ghana",
+            "Ivory Coast",
+            "Togo",
+            "Tunisia"
+          ],
+          "AFC": [
+            "Iran",
+            "Japan",
+            "Saudi Arabia",
+            "South Korea"
+          ],
+          "OFC": [
+            "Australia"
+          ]
+        },
+        "r16": {
+          "UEFA": [
+            "Germany",
+            "England",
+            "Sweden",
+            "Netherlands",
+            "Portugal",
+            "Italy",
+            "Switzerland",
+            "France",
+            "Spain",
+            "Ukraine"
+          ],
+          "CONMEBOL": [
+            "Ecuador",
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [
+            "Mexico"
+          ],
+          "CAF": [
+            "Ghana"
+          ],
+          "AFC": [],
+          "OFC": [
+            "Australia"
+          ]
+        },
+        "qf": {
+          "UEFA": [
+            "Germany",
+            "England",
+            "Portugal",
+            "Italy",
+            "Ukraine",
+            "France"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Germany",
+            "Italy",
+            "Portugal",
+            "France"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Italy",
+            "France"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "Italy"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2010,
+      "host": "South Africa",
+      "hostConfed": "CAF",
+      "fieldSize": 32,
+      "champion": "Spain",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 53,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 53,
+        "AFC": 46,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 13,
+        "CONMEBOL": 4,
+        "CONCACAF": 3,
+        "CAF": 6,
+        "AFC": 4,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Uruguay"
+            },
+            {
+              "confed": "CONCACAF",
+              "team": "Costa Rica"
+            }
+          ],
+          "winner": "CONMEBOL"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "OFC",
+              "team": "New Zealand"
+            },
+            {
+              "confed": "AFC",
+              "team": "Bahrain"
+            }
+          ],
+          "winner": "OFC"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "First African-hosted World Cup; host South Africa was the first host ever eliminated in the group stage. CONCACAF v CONMEBOL play-off: Uruguay beat Costa Rica. AFC v OFC play-off: New Zealand beat Bahrain. Australia now attributed to the AFC.",
+        "tags": [
+          "Play-off +1 → CONMEBOL (Uruguay)",
+          "Play-off +1 → OFC (New Zealand)",
+          "Host: South Africa (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "England",
+            "France",
+            "Germany",
+            "Spain",
+            "Netherlands",
+            "Portugal",
+            "Italy",
+            "Greece",
+            "Denmark",
+            "Serbia",
+            "Slovakia",
+            "Slovenia",
+            "Switzerland"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina",
+            "Chile",
+            "Paraguay",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Mexico",
+            "Honduras"
+          ],
+          "CAF": [
+            "South Africa",
+            "Nigeria",
+            "Cameroon",
+            "Algeria",
+            "Ghana",
+            "Ivory Coast"
+          ],
+          "AFC": [
+            "Australia",
+            "Japan",
+            "North Korea",
+            "South Korea"
+          ],
+          "OFC": [
+            "New Zealand"
+          ]
+        },
+        "r16": {
+          "UEFA": [
+            "Germany",
+            "England",
+            "Netherlands",
+            "Slovakia",
+            "Portugal",
+            "Spain"
+          ],
+          "CONMEBOL": [
+            "Uruguay",
+            "Argentina",
+            "Paraguay",
+            "Brazil",
+            "Chile"
+          ],
+          "CONCACAF": [
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Ghana"
+          ],
+          "AFC": [
+            "South Korea",
+            "Japan"
+          ],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Germany",
+            "Netherlands",
+            "Spain"
+          ],
+          "CONMEBOL": [
+            "Uruguay",
+            "Argentina",
+            "Brazil",
+            "Paraguay"
+          ],
+          "CONCACAF": [],
+          "CAF": [
+            "Ghana"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Netherlands",
+            "Germany",
+            "Spain"
+          ],
+          "CONMEBOL": [
+            "Uruguay"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Netherlands",
+            "Spain"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "Spain"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2014,
+      "host": "Brazil",
+      "hostConfed": "CONMEBOL",
+      "fieldSize": 32,
+      "champion": "Germany",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 54,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 54,
+        "AFC": 46,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 13,
+        "CONMEBOL": 5,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 4,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Uruguay"
+            },
+            {
+              "confed": "AFC",
+              "team": "Jordan"
+            }
+          ],
+          "winner": "CONMEBOL"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONCACAF",
+              "team": "Mexico"
+            },
+            {
+              "confed": "OFC",
+              "team": "New Zealand"
+            }
+          ],
+          "winner": "CONCACAF"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "Host Brazil (CONMEBOL) auto-qualified. CONMEBOL v AFC play-off: Uruguay beat Jordan. CONCACAF v OFC play-off: Mexico beat New Zealand.",
+        "tags": [
+          "Play-off +1 → CONMEBOL (Uruguay)",
+          "Play-off +1 → CONCACAF (Mexico)",
+          "Host: Brazil (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Belgium",
+            "Bosnia and Herzegovina",
+            "Croatia",
+            "England",
+            "France",
+            "Germany",
+            "Greece",
+            "Italy",
+            "Netherlands",
+            "Portugal",
+            "Russia",
+            "Spain",
+            "Switzerland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Chile",
+            "Colombia",
+            "Ecuador",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Costa Rica",
+            "Honduras",
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Algeria",
+            "Cameroon",
+            "Ghana",
+            "Ivory Coast",
+            "Nigeria"
+          ],
+          "AFC": [
+            "Australia",
+            "Iran",
+            "Japan",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Netherlands",
+            "Greece",
+            "France",
+            "Switzerland",
+            "Germany",
+            "Belgium"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Chile",
+            "Colombia",
+            "Uruguay",
+            "Argentina"
+          ],
+          "CONCACAF": [
+            "Mexico",
+            "Costa Rica",
+            "United States"
+          ],
+          "CAF": [
+            "Nigeria",
+            "Algeria"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "France",
+            "Germany",
+            "Netherlands",
+            "Belgium"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Colombia",
+            "Argentina"
+          ],
+          "CONCACAF": [
+            "Costa Rica"
+          ],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Germany",
+            "Netherlands"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "Germany"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "Germany"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2018,
+      "host": "Russia",
+      "hostConfed": "UEFA",
+      "fieldSize": 32,
+      "champion": "France",
+      "championConfed": "UEFA",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 55,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 54,
+        "AFC": 46,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 14,
+        "CONMEBOL": 4,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 4,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "AFC",
+              "team": "Australia"
+            },
+            {
+              "confed": "CONCACAF",
+              "team": "Honduras"
+            }
+          ],
+          "winner": "AFC"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONMEBOL",
+              "team": "Peru"
+            },
+            {
+              "confed": "OFC",
+              "team": "New Zealand"
+            }
+          ],
+          "winner": "CONMEBOL"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "Host Russia (UEFA) auto-qualified. AFC v CONCACAF play-off: Australia beat Honduras. CONMEBOL v OFC play-off: Peru beat New Zealand. All four semi-finalists were European.",
+        "tags": [
+          "Play-off +1 → AFC (Australia)",
+          "Play-off +1 → CONMEBOL (Peru)",
+          "Host: Russia (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Belgium",
+            "Croatia",
+            "Denmark",
+            "England",
+            "France",
+            "Germany",
+            "Iceland",
+            "Poland",
+            "Portugal",
+            "Russia",
+            "Serbia",
+            "Spain",
+            "Sweden",
+            "Switzerland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Colombia",
+            "Peru",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Costa Rica",
+            "Mexico",
+            "Panama"
+          ],
+          "CAF": [
+            "Egypt",
+            "Morocco",
+            "Nigeria",
+            "Senegal",
+            "Tunisia"
+          ],
+          "AFC": [
+            "Australia",
+            "Iran",
+            "Japan",
+            "Saudi Arabia",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Russia",
+            "Spain",
+            "Portugal",
+            "France",
+            "Denmark",
+            "Croatia",
+            "Switzerland",
+            "Sweden",
+            "Belgium",
+            "England"
+          ],
+          "CONMEBOL": [
+            "Uruguay",
+            "Argentina",
+            "Brazil",
+            "Colombia"
+          ],
+          "CONCACAF": [
+            "Mexico"
+          ],
+          "CAF": [],
+          "AFC": [
+            "Japan"
+          ],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "France",
+            "Russia",
+            "Croatia",
+            "Belgium",
+            "Sweden",
+            "England"
+          ],
+          "CONMEBOL": [
+            "Uruguay",
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "France",
+            "Belgium",
+            "Croatia",
+            "England"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "France",
+            "Croatia"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [
+            "France"
+          ],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2022,
+      "host": "Qatar",
+      "hostConfed": "AFC",
+      "fieldSize": 32,
+      "champion": "Argentina",
+      "championConfed": "CONMEBOL",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 55,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 54,
+        "AFC": 46,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 13,
+        "CONMEBOL": 4,
+        "CONCACAF": 3,
+        "CAF": 5,
+        "AFC": 5,
+        "OFC": 0
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "AFC",
+              "team": "Australia"
+            },
+            {
+              "confed": "CONMEBOL",
+              "team": "Peru"
+            }
+          ],
+          "winner": "AFC"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CONCACAF",
+              "team": "Costa Rica"
+            },
+            {
+              "confed": "OFC",
+              "team": "New Zealand"
+            }
+          ],
+          "winner": "CONCACAF"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "Host Qatar (AFC) auto-qualified — the first host to lose all three group games. AFC–CONMEBOL play-off: Australia beat Peru. CONCACAF–OFC play-off: Costa Rica beat New Zealand. Morocco became the first African (and Arab) semi-finalist.",
+        "tags": [
+          "Play-off +1 → AFC (Australia)",
+          "Play-off +1 → CONCACAF (Costa Rica)",
+          "Host: Qatar (auto)"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "Belgium",
+            "Croatia",
+            "Denmark",
+            "England",
+            "France",
+            "Germany",
+            "Netherlands",
+            "Poland",
+            "Portugal",
+            "Serbia",
+            "Spain",
+            "Switzerland",
+            "Wales"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Ecuador",
+            "Uruguay"
+          ],
+          "CONCACAF": [
+            "Canada",
+            "Costa Rica",
+            "Mexico",
+            "United States"
+          ],
+          "CAF": [
+            "Cameroon",
+            "Ghana",
+            "Morocco",
+            "Senegal",
+            "Tunisia"
+          ],
+          "AFC": [
+            "Australia",
+            "Iran",
+            "Japan",
+            "Qatar",
+            "Saudi Arabia",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "Netherlands",
+            "France",
+            "Poland",
+            "England",
+            "Croatia",
+            "Spain",
+            "Portugal",
+            "Switzerland"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [
+            "United States"
+          ],
+          "CAF": [
+            "Senegal",
+            "Morocco"
+          ],
+          "AFC": [
+            "Australia",
+            "Japan",
+            "South Korea"
+          ],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [
+            "Netherlands",
+            "France",
+            "England",
+            "Croatia",
+            "Portugal"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil"
+          ],
+          "CONCACAF": [],
+          "CAF": [
+            "Morocco"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "sf": {
+          "UEFA": [
+            "Croatia",
+            "France"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [
+            "Morocco"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "final": {
+          "UEFA": [
+            "France"
+          ],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        },
+        "winner": {
+          "UEFA": [],
+          "CONMEBOL": [
+            "Argentina"
+          ],
+          "CONCACAF": [],
+          "CAF": [],
+          "AFC": [],
+          "OFC": []
+        }
+      }
+    },
+    {
+      "year": 2026,
+      "host": "USA · Canada · Mexico",
+      "hostConfed": "CONCACAF",
+      "fieldSize": 48,
+      "champion": null,
+      "championConfed": null,
+      "live": true,
+      "membersExact": true,
+      "pendingFrom": "r16",
+      "order": [
+        "members",
+        "direct",
+        "qualified",
+        "r32",
+        "r16",
+        "qf",
+        "sf",
+        "final",
+        "winner"
+      ],
+      "fifaMembers": {
+        "UEFA": 55,
+        "CONMEBOL": 10,
+        "CONCACAF": 35,
+        "CAF": 54,
+        "AFC": 46,
+        "OFC": 11
+      },
+      "directBerths": {
+        "UEFA": 16,
+        "CONMEBOL": 6,
+        "CONCACAF": 6,
+        "CAF": 9,
+        "AFC": 8,
+        "OFC": 1
+      },
+      "playoffs": [
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "CAF",
+              "team": "DR Congo"
+            },
+            {
+              "confed": "CONCACAF",
+              "team": "Jamaica"
+            },
+            {
+              "confed": "OFC",
+              "team": "New Caledonia"
+            }
+          ],
+          "winner": "CAF"
+        },
+        {
+          "place": 1,
+          "entrants": [
+            {
+              "confed": "AFC",
+              "team": "Iraq"
+            },
+            {
+              "confed": "CONMEBOL",
+              "team": "Bolivia"
+            },
+            {
+              "confed": "CONCACAF",
+              "team": "Suriname"
+            }
+          ],
+          "winner": "AFC"
+        }
+      ],
+      "qualificationNotes": {
+        "summary": "First 48-team World Cup, with three CONCACAF hosts (all auto-qualified) and a new Round of 32. A six-team intercontinental play-off (March 2026) awarded two places: DR Congo (CAF) and Iraq (AFC) won them — so the two extra berths went outside their pattern, lifting CAF to 10 and AFC to 9. OFC received its first-ever guaranteed direct slot (New Zealand).",
+        "tags": [
+          "Play-off +1 → CAF (DR Congo)",
+          "Play-off +1 → AFC (Iraq)",
+          "Hosts USA + Canada + Mexico"
+        ]
+      },
+      "knockout": {
+        "qualified": {
+          "UEFA": [
+            "England",
+            "France",
+            "Spain",
+            "Portugal",
+            "Germany",
+            "Netherlands",
+            "Belgium",
+            "Croatia",
+            "Switzerland",
+            "Norway",
+            "Austria",
+            "Sweden",
+            "Scotland",
+            "Türkiye",
+            "Czechia",
+            "Bosnia and Herzegovina"
+          ],
+          "CONMEBOL": [
+            "Argentina",
+            "Brazil",
+            "Uruguay",
+            "Colombia",
+            "Ecuador",
+            "Paraguay"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Canada",
+            "Mexico",
+            "Panama",
+            "Curaçao",
+            "Haiti"
+          ],
+          "CAF": [
+            "Morocco",
+            "Senegal",
+            "Ivory Coast",
+            "Egypt",
+            "Algeria",
+            "Tunisia",
+            "Ghana",
+            "South Africa",
+            "Cape Verde",
+            "DR Congo"
+          ],
+          "AFC": [
+            "Japan",
+            "South Korea",
+            "Iran",
+            "Australia",
+            "Saudi Arabia",
+            "Qatar",
+            "Uzbekistan",
+            "Jordan",
+            "Iraq"
+          ],
+          "OFC": [
+            "New Zealand"
+          ]
+        },
+        "r32": {
+          "UEFA": [
+            "Germany",
+            "Netherlands",
+            "France",
+            "England",
+            "Belgium",
+            "Spain",
+            "Portugal",
+            "Switzerland",
+            "Norway",
+            "Sweden",
+            "Austria",
+            "Croatia",
+            "Bosnia and Herzegovina"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina",
+            "Colombia",
+            "Paraguay",
+            "Ecuador"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Canada",
+            "Mexico"
+          ],
+          "CAF": [
+            "Morocco",
+            "Senegal",
+            "Ivory Coast",
+            "Egypt",
+            "Algeria",
+            "Ghana",
+            "South Africa",
+            "Cape Verde",
+            "DR Congo"
+          ],
+          "AFC": [
+            "Japan",
+            "Australia"
+          ],
+          "OFC": []
+        }
+      }
+    }
+  ],
+  "methodology": [
+    "Teams are attributed to the confederation they qualified THROUGH in that cycle (e.g. Australia = OFC for 2006, having qualified via Oceania before its 1 Jan 2006 move; AFC from 2010).",
+    "directBerths are the guaranteed slots, including hosts and (through 2002) the defending champions. Inter-confederation play-offs award the remaining places, credited as +1 to the winning confederation; directBerths + play-off wins reconcile exactly to fieldSize.",
+    "playoffs[].winner is the confederation that won each contested place; it always equals the set of confederations where qualified-count minus directBerths == 1.",
+    "FIFA-membership figures (fifaMembers) for past editions are approximate reconstructions from confederation admission dates; only the 2026 breakdown (membersExact:true; UEFA 55, CAF 54, AFC 46, CONCACAF 35, CONMEBOL 10, OFC 11 = 211) is exact.",
+    "1982 used a two-group-stage format (24 -> 12 -> 4 semi-finalists), so it has 'r12' (second round) instead of a Round of 16 / quarter-finals.",
+    "2026 introduces a Round of 32 (48 -> 32). Phases align by teams remaining, so 2026's r32 is comparable to the 32-team fields of 1998-2022."
+  ],
+  "sources": [
+    "https://en.wikipedia.org/wiki/List_of_FIFA_member_associations",
+    "https://en.wikipedia.org/wiki/1982_FIFA_World_Cup (and the 1986...2026 tournament, _qualification and _knockout_stage pages for every edition)",
+    "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification_(inter-confederation_play-offs)",
+    "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(AFC%E2%80%93CONMEBOL_play-off)",
+    "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(CONCACAF%E2%80%93OFC_play-off)",
+    "FIFA.com member associations & 2026 qualified teams",
+    "Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports & FIFA.com (accessed 3 July 2026)"
+  ]
+}

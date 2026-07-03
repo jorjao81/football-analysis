@@ -1,0 +1,12 @@
+{
+  "name": "football-analysis",
+  "version": "1.0.0",
+  "description": "Data-driven football analyses as self-contained interactive HTML reports — including the World Cup Confederation Funnel (1982–2026).",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "author": "Paulo Schreiner",
+  "license": "MIT"
+}
