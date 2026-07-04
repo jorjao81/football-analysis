@@ -79,7 +79,7 @@ each round is a strict subset of the previous one.
   confederation admission dates (≈150 members in 1982 → ~200 by 2000 → 211 since 2016).
   Only the 2026 breakdown (UEFA 55, CAF 54, AFC 46, CONCACAF 35, CONMEBOL 10, OFC 11 = 211)
   is exact. Everything from **direct berths downward is exact and cross-verified**.
-- **2026 is in progress**: data is complete through the **Round of 32** (3 July 2026).
+- **2026 is in progress**: the Round of 32 is complete and the **Round-of-16 field is set** (16 teams; as of 4 July 2026). The Round-of-16 matches begin 4 July, so `qf` onward is still pending.
 
 ## 🇩🇪 Germany — World Cup Advanced Metrics (2018 / 2022 / 2026)
 

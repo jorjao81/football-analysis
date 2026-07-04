@@ -1,8 +1,8 @@
 {
   "title": "World Cup Confederation Funnel — 1982–2026",
   "description": "Every FIFA World Cup from 1982 to 2026 as a confederation funnel: FIFA members -> direct berths -> inter-confederation play-offs -> qualified field -> knockout rounds -> champion, phases aligned by teams remaining.",
-  "generated": "2026-07-03",
-  "liveNote": "2026 is in progress; data is complete through the Round of 32 (3 July 2026). Tiers at/after each edition's 'pendingFrom' key are not yet played.",
+  "generated": "2026-07-04",
+  "liveNote": "2026 is in progress; the Round of 32 is complete and the Round-of-16 field is set (16 teams, as of 4 July 2026). The Round-of-16 matches begin 4 July; tiers at/after each edition's 'pendingFrom' key (qf onward for 2026) are not yet played.",
   "confederationOrder": [
     "UEFA",
     "CONMEBOL",
@@ -2204,7 +2204,7 @@
       "championConfed": null,
       "live": true,
       "membersExact": true,
-      "pendingFrom": "r16",
+      "pendingFrom": "qf",
       "order": [
         "members",
         "direct",
@@ -2385,6 +2385,34 @@
             "Australia"
           ],
           "OFC": []
+        },
+        "r16": {
+          "UEFA": [
+            "France",
+            "England",
+            "Belgium",
+            "Spain",
+            "Portugal",
+            "Switzerland",
+            "Norway"
+          ],
+          "CONMEBOL": [
+            "Brazil",
+            "Argentina",
+            "Colombia",
+            "Paraguay"
+          ],
+          "CONCACAF": [
+            "United States",
+            "Canada",
+            "Mexico"
+          ],
+          "CAF": [
+            "Morocco",
+            "Egypt"
+          ],
+          "AFC": [],
+          "OFC": []
         }
       }
     }
@@ -2404,6 +2432,6 @@
     "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(AFC%E2%80%93CONMEBOL_play-off)",
     "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(CONCACAF%E2%80%93OFC_play-off)",
     "FIFA.com member associations & 2026 qualified teams",
-    "Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports & FIFA.com (accessed 3 July 2026)"
+    "Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports & FIFA.com (accessed 4 July 2026)"
   ]
 }
