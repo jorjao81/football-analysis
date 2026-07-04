@@ -57,6 +57,7 @@ Each **edition** object:
 | `year`, `host`, `hostConfed`, `fieldSize` | Basics (24 / 32 / 48 teams) |
 | `champion`, `championConfed` | Winner (null for the in-progress 2026) |
 | `live`, `pendingFrom`, `membersExact` | 2026 flags: live; tiers at/after `pendingFrom` are not-yet-played; membership is exact |
+| `partialTiers[]` | Tiers that are **in progress** — played but not yet complete (e.g. `["qf"]` when one quarter-finalist is known). Holds `1..expected-1` teams; shown as a partial ring and excluded from the cross-year comparator |
 | `order[]` | Phase order (`members → direct → playoffs → qualified → …`; `playoffs` is inserted by the renderer) |
 | `fifaMembers{confed:int}` | FIFA member associations by confederation (**approximate** for past editions) |
 | `directBerths{confed:int}` | Guaranteed slots (incl. hosts and, through 2002, holders) |
@@ -68,7 +69,9 @@ Each **edition** object:
 `directBerths[c] + (1 if c won a play-off) == qualified count for c`, and the sums
 reconcile to `fieldSize`. So a confederation's qualified total is always its guaranteed
 berths plus any play-off `+1`. Knockout tiers halve cleanly (16 → 8 → 4 → 2 → 1) and
-each round is a strict subset of the previous one.
+each round is a strict subset of the previous one. A tier listed in `partialTiers`
+is exempt from the exact-count rule (it holds `1..expected-1` teams so far) but must
+still be a subset of the previous round.
 
 ### Caveats
 
@@ -79,7 +82,7 @@ each round is a strict subset of the previous one.
   confederation admission dates (≈150 members in 1982 → ~200 by 2000 → 211 since 2016).
   Only the 2026 breakdown (UEFA 55, CAF 54, AFC 46, CONCACAF 35, CONMEBOL 10, OFC 11 = 211)
   is exact. Everything from **direct berths downward is exact and cross-verified**.
-- **2026 is in progress**: the Round of 32 is complete and the **Round-of-16 field is set** (16 teams; as of 4 July 2026). The Round-of-16 matches begin 4 July, so `qf` onward is still pending.
+- **2026 is in progress**: the **Round of 16 is under way** (as of 4 July 2026). Morocco are the first quarter-finalist (3–0 v Canada), so the **quarter-finals show as a partial ring** (`partialTiers: ["qf"]`); `sf` onward is still pending.
 
 ## 🇩🇪 Germany — World Cup Advanced Metrics (2018 / 2022 / 2026)
 

@@ -20,6 +20,7 @@ export function validate(data) {
   const sumArr = m => CK.reduce((n, c) => n + len(m, c), 0);
   const sumNum = m => CK.reduce((n, c) => n + m[c], 0);
   const isPending = (e, t) => e.pendingFrom && e.order.indexOf(t) >= e.order.indexOf(e.pendingFrom);
+  const isPartial = (e, t) => (e.partialTiers || []).includes(t);
 
   for (const e of data.editions) {
     const q = e.knockout.qualified;
@@ -40,11 +41,20 @@ export function validate(data) {
       `${e.year}: directBerths(${sumNum(e.directBerths)}) + play-offs(${poTotal}) != ${size}`);
 
     // 3. each played knockout tier holds the expected number of teams
+    //    — except a "partial" (in-progress) tier, which holds 1..exp-1 so far
     for (const t of Object.keys(e.knockout)) {
       if (t === 'qualified' || isPending(e, t)) continue;
       const exp = EXPECTED_TIER_TEAMS[t];
       if (exp == null) continue;
-      bad(sumArr(e.knockout[t]) === exp, `${e.year}: ${t} sum ${sumArr(e.knockout[t])} != ${exp}`);
+      const got = sumArr(e.knockout[t]);
+      if (isPartial(e, t)) bad(got > 0 && got < exp, `${e.year}: partial ${t} sum ${got} not in 1..${exp - 1}`);
+      else bad(got === exp, `${e.year}: ${t} sum ${got} != ${exp}`);
+    }
+
+    // 3b. partial tiers must have data and sit before pendingFrom (i.e. actually be played)
+    for (const t of (e.partialTiers || [])) {
+      bad(e.knockout[t], `${e.year}: partialTiers lists ${t} but it has no knockout data`);
+      bad(!isPending(e, t), `${e.year}: partial tier ${t} is at/after pendingFrom ${e.pendingFrom}`);
     }
 
     // 4. monotonic containment: every team in a round appeared in the previous played round

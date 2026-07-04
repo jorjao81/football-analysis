@@ -275,6 +275,13 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
 .fl{margin-right:.32em;font-style:normal;line-height:1}
 .share{white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
 .share.ok{background:var(--c-conmebol);color:#fff;border-color:var(--c-conmebol)}
+/* partial / in-progress tier */
+.frow.partial .tteams{color:var(--gold-ink)}
+.seg-b.partial-rem{background:repeating-linear-gradient(45deg,var(--hair-2),var(--hair-2) 7px,transparent 7px,transparent 14px);
+  border:1px dashed var(--hair);border-radius:3px}
+.seg-b.partial-rem span{color:var(--muted);text-shadow:none;font-weight:600;font-family:var(--mono);font-size:10px}
+table.data tr.partial-row td.tier{color:var(--gold-ink)}
+table.data td .po{color:var(--gold-ink);font-size:11px}
 /*__CONF_COLORS__*/
 </style>
 
@@ -286,7 +293,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
     <h1>211 nations enter.<br>One lifts the trophy.</h1>
     <p class="sub">Twelve World Cups, traced ring by ring — from every FIFA member association, down through qualifying berths and the tournament field, to the last team standing — and colour-coded by the six confederations that funnel the world's teams. Phases are <b>aligned by the number of teams remaining</b>, so 2026's Round of 32 lines up with the 32-nation fields of 1998–2022.</p>
     <div class="mini-funnel" id="miniFunnel" aria-hidden="true"></div>
-    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. The Round of 32 is complete and the <b>Round-of-16 field is set</b> (as of 4 July 2026); later rounds are marked not-yet-played.</p>
+    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. The <b>Round of 16 is under way</b> — Morocco are the first quarter-finalist (as of 4 July 2026) — so the quarter-finals show as a <b>partial</b>, in-progress ring; later rounds are marked not-yet-played.</p>
   </div>
 </header>
 
@@ -438,7 +445,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
 </main>
 
 <footer><div class="wrap">
-  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live through the Round-of-16 field (4 July 2026).
+  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live: Round of 16 under way, first quarter-finalist decided (4 July 2026).
 </div></footer>
 
 <script>
@@ -455,7 +462,7 @@ function teamsAtTier(e,tier){
 const ED = DATA.editions.map(x=>({
   year:x.year, host:x.host, hostConf:x.hostConfed, size:x.fieldSize,
   champion:x.champion, championConf:x.championConfed, live:x.live, membersExact:x.membersExact,
-  order:x.order.slice(), pendingFrom:x.pendingFrom,
+  order:x.order.slice(), pendingFrom:x.pendingFrom, partialTiers:x.partialTiers||[],
   members:x.fifaMembers, direct:x.directBerths,
   playoffs:(x.playoffs||[]).map(p=>({entrants:p.entrants.map(en=>[en.confed,en.team]),winner:p.winner})),
   playoff:{note:x.qualificationNotes.summary, tags:x.qualificationNotes.tags},
@@ -489,6 +496,8 @@ function countAt(e,tier,c){
 function sumTier(e,tier){return CK.reduce((s,c)=>s+countAt(e,tier,c),0);}
 function poWin(e,c){ if(e.isAgg||!e.direct)return 0; return Math.max(0, countAt(e,'qualified',c)-e.direct[c]); }
 function tierTeams(e,tier){const d=TIERS[tier];if(!d)return null;return d.teams==='size'?e.size:d.teams;}
+function isPending(e,tier){return e.pendingFrom && e.order.indexOf(tier)>=e.order.indexOf(e.pendingFrom);}
+function isPartial(e,tier){return (e.partialTiers||[]).includes(tier);}
 
 /* ============================ FLAGS ============================ */
 /* name -> ISO 3166-1 alpha-2; emoji is derived (regional-indicator pairs).
@@ -535,6 +544,7 @@ function showTT(html,x,y){tt.innerHTML=html;tt.style.opacity='1';
 function hideTT(){tt.style.opacity='0';}
 function ttContent(e,tier,c){
   const cnt=countAt(e,tier,c), tot=sumTier(e,tier), pct=tot?Math.round(cnt/tot*100):0;
+  const partial=isPartial(e,tier), exp=tierTeams(e,tier);
   const sw=`<span class="sw" style="background:${confColor(c)}"></span>`;
   let nats='';
   if(tier==='qualified'){
@@ -545,8 +555,9 @@ function ttContent(e,tier,c){
     const arr=e.tiers[tier][c]||[]; nats=arr.length?`<div class="ttn">${arr.map(flagName).join(' · ')}</div>`:'';
   } else if(tier==='direct'){ nats=`<div class="ttn">guaranteed direct berths (excl. play-offs)</div>`; }
   else if(tier==='members'){ nats=`<div class="ttn">FIFA member associations${e.membersExact?'':' (approx.)'}</div>`; }
-  const label=(e.isAgg?'1998–2022 pooled':e.year)+' · '+TIERS[tier].label;
-  return `<div class="tth">${sw}${c}</div><div class="ttv">${cnt}${tot?` · ${pct}%`:''}</div><div class="ttn" style="opacity:.6;margin-bottom:3px">${label}</div>${nats}`;
+  const label=(e.isAgg?'1998–2022 pooled':e.year)+' · '+TIERS[tier].label+(partial?` · in progress (${tot} of ${exp} decided)`:'');
+  const ttv=partial?`${cnt}`:`${cnt}${tot?` · ${pct}%`:''}`;
+  return `<div class="tth">${sw}${c}</div><div class="ttv">${ttv}</div><div class="ttn" style="opacity:.6;margin-bottom:3px">${label}</div>${nats}`;
 }
 function bindTT(el,e,tier,c){
   el.onmousemove=ev=>showTT(ttContent(e,tier,c),ev.clientX,ev.clientY);
@@ -593,7 +604,7 @@ function currentEd(){return state.ed==='AGG'?AGG:byYear[state.ed];}
 function renderEdTitle(){
   const e=currentEd(); const el=document.getElementById('edTitle');
   if(e.isAgg){el.innerHTML=`<h3>1998–2022 · pooled</h3><span class="host">Seven 32-team tournaments · 224 team-slots</span><span class="badge">aggregate</span>`;return;}
-  const badge=e.live?`<span class="badge live">● live · R16 set</span>`
+  const badge=e.live?`<span class="badge live">● live · R16 under way</span>`
     :`<span class="badge">🏆 ${flagName(e.champion)} · ${e.championConf}</span>`;
   el.innerHTML=`<h3>${e.year} · ${e.host}</h3><span class="host">${e.size} teams · host ${e.hostConf}</span>${badge}`;
 }
@@ -630,11 +641,13 @@ function renderFunnel(){
     const row=document.createElement('div'); row.className='frow'+(tier==='winner'?' champ':'');
     const teams=tierTeams(e,tier);
     const tot=sumTier(e,tier);
-    const pending = e.pendingFrom && e.order.indexOf(tier)>=e.order.indexOf(e.pendingFrom);
+    const pending = isPending(e,tier);
+    const partial = isPartial(e,tier);
     let teamTxt;
     if(tier==='members') teamTxt=`${tot}${TIERS.members.approx&&!e.membersExact?' ≈':''}`;
     else if(tier==='direct') teamTxt=`${tot} berths`;
     else if(e.isAgg) teamTxt=`${tot} total`;
+    else if(partial) teamTxt=`${tot} of ${teams} · in progress`;
     else if(tier==='winner'&&e.champion) teamTxt=`🏆 ${flagName(e.champion)}`;
     else teamTxt = teams!=null?`${teams} team${teams===1?'':'s'}`:'';
     row.innerHTML=`<div class="meta"><div class="tlabel">${TIERS[tier].label}</div><div class="tteams">${teamTxt}</div></div>`;
@@ -644,21 +657,32 @@ function renderFunnel(){
       bar.innerHTML=`<div class="pmsg">not yet played</div>`;
       row.appendChild(bar); host.appendChild(row); return;
     }
+    if(partial) row.classList.add('partial');
     bar.className='bar';
+    // partial (in-progress) tiers are scaled to the FULL expected count, so a
+    // lone qualifier reads as "1 of 8" rather than a misleading 100% bar.
+    const denom = partial ? teams : tot;
     CK.forEach(c=>{
       const cnt=countAt(e,tier,c); if(cnt<=0)return;
       const seg=document.createElement('div');
       seg.className='seg-b'+(state.focus&&state.focus!==c?' faded':'');
-      seg.style.width=(cnt/tot*100)+'%'; seg.style.background=confColor(c);
+      seg.style.width=(cnt/denom*100)+'%'; seg.style.background=confColor(c);
       const pct=Math.round(cnt/tot*100);
       const po=(tier==='qualified')?poWin(e,c):0;
-      if(cnt/tot*100>6){
-        seg.innerHTML=`<span>${segLabel(cnt,pct)}${po>0?`<sup>+${po}</sup>`:''}</span>`;
+      if(cnt/denom*100>6){
+        seg.innerHTML=`<span>${partial?cnt:segLabel(cnt,pct)}${po>0?`<sup>+${po}</sup>`:''}</span>`;
       }
       if(po>0){ const add=document.createElement('div'); add.className='po-add'; add.style.width=(po/cnt*100)+'%'; seg.appendChild(add); }
       bindTT(seg,e,tier,c);
       bar.appendChild(seg);
     });
+    if(partial){
+      const rem=teams-tot;
+      if(rem>0){ const h=document.createElement('div'); h.className='seg-b partial-rem';
+        h.style.width=(rem/teams*100)+'%';
+        if(rem/teams*100>6) h.innerHTML=`<span>${rem} to be decided</span>`;
+        bar.appendChild(h); }
+    }
     row.appendChild(bar); host.appendChild(row);
   });
 }
@@ -672,19 +696,20 @@ function renderTable(){
   let body='<tbody>';
   e.order.forEach(tier=>{
     if(tier==='playoffs')return;
-    const pending = e.pendingFrom && e.order.indexOf(tier)>=e.order.indexOf(e.pendingFrom);
+    const pending = isPending(e,tier); const partial = isPartial(e,tier);
     const tot=sumTier(e,tier); const teams=tierTeams(e,tier);
-    const sub = tier==='members'?'members':tier==='direct'?'direct':(teams!=null?teams+(teams===1?' team':' teams'):'');
-    body+=`<tr class="${tier==='winner'?'champ-row':''}"><td class="tier">${TIERS[tier].label}<small>${sub}</small></td>`;
+    let sub = tier==='members'?'members':tier==='direct'?'direct':(teams!=null?teams+(teams===1?' team':' teams'):'');
+    if(partial) sub = `${tot} of ${teams} · live`;
+    body+=`<tr class="${tier==='winner'?'champ-row':''}${partial?' partial-row':''}"><td class="tier">${TIERS[tier].label}<small>${sub}</small></td>`;
     if(pending){ body+=`<td colspan="7" style="color:var(--muted);font-family:var(--mono);font-size:12px">— not yet played —</td></tr>`; return; }
     CK.forEach(c=>{
       const cnt=countAt(e,tier,c); const pct=tot?Math.round(cnt/tot*100):0;
       const po=(tier==='qualified')?poWin(e,c):0;
       const faded=state.focus&&state.focus!==c;
       const vtxt = cnt>0?(cnt+(po>0?`<span class="po"> +${po}</span>`:'')):'·';
-      body+=`<td class="${cnt<=0?'zero':''}" style="${faded?'opacity:.32':''}"><span class="v" style="color:${cnt>0?confColor(c):''}">${vtxt}</span>${cnt>0&&tot?`<span class="p">${pct}%</span>`:''}</td>`;
+      body+=`<td class="${cnt<=0?'zero':''}" style="${faded?'opacity:.32':''}"><span class="v" style="color:${cnt>0?confColor(c):''}">${vtxt}</span>${(!partial&&cnt>0&&tot)?`<span class="p">${pct}%</span>`:''}</td>`;
     });
-    body+=`<td class="tot"><span class="v">${tot}</span></td></tr>`;
+    body+=`<td class="tot"><span class="v">${tot}${partial?`<span class="po"> /${teams}</span>`:''}</span></td></tr>`;
   });
   tb.innerHTML=head+body+'</tbody>';
 }
@@ -729,7 +754,7 @@ const LEVELS=[
 function tierForLevel(e,level){
   for(const t of e.order){
     if(t==='members'||t==='direct')continue;
-    if(e.pendingFrom && e.order.indexOf(t)>=e.order.indexOf(e.pendingFrom))continue;
+    if(isPending(e,t)||isPartial(e,t))continue; // in-progress tiers aren't a complete phase to compare
     if(teamsAtTier(e,t)===level) return t;
   }
   return null;

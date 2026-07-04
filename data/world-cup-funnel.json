@@ -2,7 +2,7 @@
   "title": "World Cup Confederation Funnel — 1982–2026",
   "description": "Every FIFA World Cup from 1982 to 2026 as a confederation funnel: FIFA members -> direct berths -> inter-confederation play-offs -> qualified field -> knockout rounds -> champion, phases aligned by teams remaining.",
   "generated": "2026-07-04",
-  "liveNote": "2026 is in progress; the Round of 32 is complete and the Round-of-16 field is set (16 teams, as of 4 July 2026). The Round-of-16 matches begin 4 July; tiers at/after each edition's 'pendingFrom' key (qf onward for 2026) are not yet played.",
+  "liveNote": "2026 is in progress; the Round of 16 is under way (as of 4 July 2026). Morocco are the first quarter-finalist (3-0 v Canada), so the quarter-finals are shown as a partial tier (see 'partialTiers'); tiers at/after each edition's 'pendingFrom' key (sf onward for 2026) are not yet played.",
   "confederationOrder": [
     "UEFA",
     "CONMEBOL",
@@ -2204,7 +2204,10 @@
       "championConfed": null,
       "live": true,
       "membersExact": true,
-      "pendingFrom": "qf",
+      "pendingFrom": "sf",
+      "partialTiers": [
+        "qf"
+      ],
       "order": [
         "members",
         "direct",
@@ -2410,6 +2413,16 @@
           "CAF": [
             "Morocco",
             "Egypt"
+          ],
+          "AFC": [],
+          "OFC": []
+        },
+        "qf": {
+          "UEFA": [],
+          "CONMEBOL": [],
+          "CONCACAF": [],
+          "CAF": [
+            "Morocco"
           ],
           "AFC": [],
           "OFC": []
