@@ -270,6 +270,11 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
   .seg-b span{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* flags + share */
+.fl{margin-right:.32em;font-style:normal;line-height:1}
+.share{white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.share.ok{background:var(--c-conmebol);color:#fff;border-color:var(--c-conmebol)}
 :root{--c-uefa:#1f6fb2;--c-conmebol:#009e73;--c-concacaf:#b23a82;--c-caf:#c77400;--c-afc:#c1272d;--c-ofc:#2c8dbf}
 @media (prefers-color-scheme:dark){:root{--c-uefa:#4c9ad9;--c-conmebol:#1f9e79;--c-concacaf:#c95b95;--c-caf:#c67f1c;--c-afc:#e5544e;--c-ofc:#3391c4}}
 :root[data-theme="light"]{--c-uefa:#1f6fb2;--c-conmebol:#009e73;--c-concacaf:#b23a82;--c-caf:#c77400;--c-afc:#c1272d;--c-ofc:#2c8dbf}
@@ -284,7 +289,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
     <h1>211 nations enter.<br>One lifts the trophy.</h1>
     <p class="sub">Twelve World Cups, traced ring by ring — from every FIFA member association, down through qualifying berths and the tournament field, to the last team standing — and colour-coded by the six confederations that funnel the world's teams. Phases are <b>aligned by the number of teams remaining</b>, so 2026's Round of 32 lines up with the 32-nation fields of 1998–2022.</p>
     <div class="mini-funnel" id="miniFunnel" aria-hidden="true"></div>
-    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. Data runs through the <b>Round of 32</b> (concluding 3 July 2026); later rounds are marked not-yet-played.</p>
+    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. The Round of 32 is complete and the <b>Round-of-16 field is set</b> (as of 4 July 2026); later rounds are marked not-yet-played.</p>
   </div>
 </header>
 
@@ -315,7 +320,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
 </section>
 
 <!-- INTERACTIVE FUNNEL -->
-<section>
+<section id="sec-funnel">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">The interactive funnel</div>
@@ -336,6 +341,10 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
             <button data-val="pct" aria-pressed="false">Percent</button>
           </div>
         </div>
+        <div style="margin-left:auto">
+          <span class="ctrl-label">Share</span>
+          <button class="chip share" id="shareFunnel" type="button" data-label="🔗 Copy link">🔗 Copy link</button>
+        </div>
       </div>
 
       <div class="legend legend-host"></div>
@@ -355,7 +364,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
 </section>
 
 <!-- COMPARE ACROSS YEARS -->
-<section>
+<section id="sec-compare">
   <div class="wrap">
     <div class="sec-head">
       <div class="eyebrow">Compare across years</div>
@@ -367,6 +376,10 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
         <div style="width:100%">
           <span class="ctrl-label">Teams remaining at this phase</span>
           <div class="levels" id="levels"></div>
+        </div>
+        <div style="margin-left:auto">
+          <span class="ctrl-label">Share</span>
+          <button class="chip share" id="shareCompare" type="button" data-label="🔗 Copy link">🔗 Copy link</button>
         </div>
       </div>
       <div class="legend legend-host"></div>
@@ -419,7 +432,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
       <li>Wikipedia — “<a href="https://en.wikipedia.org/wiki/1982_FIFA_World_Cup">1982</a>”, “1986”, … “<a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup">2026 FIFA World Cup</a>” (tournament, qualification &amp; knockout-stage pages for each edition)</li>
       <li>Wikipedia — <a href="https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification_(inter-confederation_play-offs)">2026 inter-confederation play-offs</a>; 2022 <a href="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(AFC%E2%80%93CONMEBOL_play-off)">AFC–CONMEBOL</a> &amp; <a href="https://en.wikipedia.org/wiki/2022_FIFA_World_Cup_qualification_(CONCACAF%E2%80%93OFC_play-off)">CONCACAF–OFC</a> play-offs</li>
       <li>FIFA.com — member associations &amp; 2026 qualified teams</li>
-      <li>Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports &amp; FIFA.com (accessed 3 July 2026)</li>
+      <li>Live 2026 results cross-checked against ESPN, BBC Sport, CBS Sports &amp; FIFA.com (accessed 4 July 2026)</li>
     </ul>
     </div>
     <p style="margin-top:16px;font-size:12px">Two automated source-fetches produced garbled knockout scores during research (2014 and 2022 quarter-finals); both were caught via internal inconsistency and corrected against ESPN / Sky / FIFA before entry.</p>
@@ -428,7 +441,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--hair);color:var(--muted);f
 </main>
 
 <footer><div class="wrap">
-  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live through the Round of 32 (3 July 2026).
+  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live through the Round-of-16 field (4 July 2026).
 </div></footer>
 
 <script>
@@ -480,6 +493,42 @@ function sumTier(e,tier){return CK.reduce((s,c)=>s+countAt(e,tier,c),0);}
 function poWin(e,c){ if(e.isAgg||!e.direct)return 0; return Math.max(0, countAt(e,'qualified',c)-e.direct[c]); }
 function tierTeams(e,tier){const d=TIERS[tier];if(!d)return null;return d.teams==='size'?e.size:d.teams;}
 
+/* ============================ FLAGS ============================ */
+/* name -> ISO 3166-1 alpha-2; emoji is derived (regional-indicator pairs).
+   Note: emoji flags render on Apple/Android/Linux; Windows shows the 2-letter code.
+   West Germany uses DE (identical black-red-gold flag). Historical dissolved states
+   (USSR, Yugoslavia, Czechoslovakia, Serbia & Montenegro) have no emoji and fall back
+   to the bare name — as do Northern Ireland (no standard emoji). */
+const ISO2={
+  "Algeria":"DZ","Angola":"AO","Argentina":"AR","Australia":"AU","Austria":"AT",
+  "Bahrain":"BH","Belgium":"BE","Bolivia":"BO","Bosnia and Herzegovina":"BA","Brazil":"BR",
+  "Bulgaria":"BG","Cameroon":"CM","Canada":"CA","Cape Verde":"CV","Chile":"CL",
+  "China PR":"CN","Colombia":"CO","Costa Rica":"CR","Croatia":"HR","Curaçao":"CW",
+  "Czech Republic":"CZ","Czechia":"CZ","DR Congo":"CD","Denmark":"DK","Ecuador":"EC",
+  "Egypt":"EG","El Salvador":"SV","France":"FR","Germany":"DE","Ghana":"GH",
+  "Greece":"GR","Haiti":"HT","Honduras":"HN","Hungary":"HU","Iceland":"IS",
+  "Iran":"IR","Iraq":"IQ","Israel":"IL","Italy":"IT","Ivory Coast":"CI",
+  "Jamaica":"JM","Japan":"JP","Jordan":"JO","Kuwait":"KW","Mexico":"MX",
+  "Morocco":"MA","Netherlands":"NL","New Caledonia":"NC","New Zealand":"NZ","Nigeria":"NG",
+  "North Korea":"KP","Norway":"NO","Panama":"PA","Paraguay":"PY","Peru":"PE",
+  "Poland":"PL","Portugal":"PT","Qatar":"QA","Rep. of Ireland":"IE","Republic of Ireland":"IE",
+  "Romania":"RO","Russia":"RU","Saudi Arabia":"SA","Senegal":"SN","Serbia":"RS",
+  "Slovakia":"SK","Slovenia":"SI","South Africa":"ZA","South Korea":"KR","Spain":"ES",
+  "Suriname":"SR","Sweden":"SE","Switzerland":"CH","Togo":"TG","Trinidad & Tobago":"TT",
+  "Trinidad and Tobago":"TT","Tunisia":"TN","Turkey":"TR","Türkiye":"TR","Ukraine":"UA",
+  "United Arab Emirates":"AE","United States":"US","Uruguay":"UY","Uzbekistan":"UZ","West Germany":"DE"
+};
+const SUBFLAG={"England":"gbeng","Scotland":"gbsct","Wales":"gbwls"};
+function riFlag(iso){return iso.replace(/[A-Z]/g,ch=>String.fromCodePoint(0x1F1E6+ch.charCodeAt(0)-65));}
+function subFlag(code){return String.fromCodePoint(0x1F3F4)+[...code].map(ch=>String.fromCodePoint(0xE0000+ch.charCodeAt(0))).join('')+String.fromCodePoint(0xE007F);}
+const _flagCache={};
+function flagOf(name){
+  if(name in _flagCache)return _flagCache[name];
+  let f=''; if(SUBFLAG[name])f=subFlag(SUBFLAG[name]); else if(ISO2[name])f=riFlag(ISO2[name]);
+  return _flagCache[name]=f;
+}
+function flagName(name){const f=flagOf(name);return f?`<span class="fl">${f}</span>${name}`:name;}
+
 /* ============================ TOOLTIP ============================ */
 const tt=document.getElementById('tt');
 function showTT(html,x,y){tt.innerHTML=html;tt.style.opacity='1';
@@ -493,10 +542,10 @@ function ttContent(e,tier,c){
   let nats='';
   if(tier==='qualified'){
     const po=poWin(e,c), arr=e.tiers.qualified[c]||[];
-    nats=(arr.length?`<div class="ttn">${arr.join(' · ')}</div>`:'')
+    nats=(arr.length?`<div class="ttn">${arr.map(flagName).join(' · ')}</div>`:'')
       + (po>0?`<div class="ttn" style="color:#ffd98a;margin-top:3px">${e.direct[c]} direct + ${po} via inter-confederation play-off</div>`:'');
   } else if(tier!=='members'&&tier!=='direct'&&e.tiers[tier]){
-    const arr=e.tiers[tier][c]||[]; nats=arr.length?`<div class="ttn">${arr.join(' · ')}</div>`:'';
+    const arr=e.tiers[tier][c]||[]; nats=arr.length?`<div class="ttn">${arr.map(flagName).join(' · ')}</div>`:'';
   } else if(tier==='direct'){ nats=`<div class="ttn">guaranteed direct berths (excl. play-offs)</div>`; }
   else if(tier==='members'){ nats=`<div class="ttn">FIFA member associations${e.membersExact?'':' (approx.)'}</div>`; }
   const label=(e.isAgg?'1998–2022 pooled':e.year)+' · '+TIERS[tier].label;
@@ -510,7 +559,7 @@ function bindTT(el,e,tier,c){
 }
 
 /* ============================ STATE ============================ */
-let state={ed:2026,val:'count',focus:null,level:32};
+let state={ed:2026,val:'count',focus:null,level:32,view:null};
 
 /* ============================ LEGEND (shared) ============================ */
 function renderLegend(){
@@ -520,7 +569,7 @@ function renderLegend(){
       const b=document.createElement('button');
       b.className='lg'; b.setAttribute('aria-pressed', state.focus&&state.focus!==c.k?'false':'true');
       b.innerHTML=`<span class="sw" style="background:${confColor(c.k)}"></span>${c.k}<span class="lgn">${c.long}</span>`;
-      b.onclick=()=>{state.focus = state.focus===c.k?null:c.k; renderAll();};
+      b.onclick=()=>{state.focus = state.focus===c.k?null:c.k; renderAll(); syncHash(false);};
       el.appendChild(b);
     });
   });
@@ -532,13 +581,13 @@ function renderEditions(){
   ED.forEach(e=>{
     const b=document.createElement('button'); b.className='chip';
     b.textContent=e.year; b.setAttribute('aria-pressed', state.ed===e.year?'true':'false');
-    b.onclick=()=>{state.ed=e.year;renderAll();};
+    b.onclick=()=>{state.ed=e.year;state.view='funnel';renderAll();syncHash(true);};
     el.appendChild(b);
   });
   const a=document.createElement('button'); a.className='chip agg';
   a.textContent='1998–22 ∑'; a.title='Pooled aggregate of the seven 32-team tournaments';
   a.setAttribute('aria-pressed', state.ed==='AGG'?'true':'false');
-  a.onclick=()=>{state.ed='AGG';renderAll();};
+  a.onclick=()=>{state.ed='AGG';state.view='funnel';renderAll();syncHash(true);};
   el.appendChild(a);
 }
 
@@ -547,8 +596,8 @@ function currentEd(){return state.ed==='AGG'?AGG:byYear[state.ed];}
 function renderEdTitle(){
   const e=currentEd(); const el=document.getElementById('edTitle');
   if(e.isAgg){el.innerHTML=`<h3>1998–2022 · pooled</h3><span class="host">Seven 32-team tournaments · 224 team-slots</span><span class="badge">aggregate</span>`;return;}
-  const badge=e.live?`<span class="badge live">● live · through R32</span>`
-    :`<span class="badge">🏆 ${e.champion} · ${e.championConf}</span>`;
+  const badge=e.live?`<span class="badge live">● live · R16 set</span>`
+    :`<span class="badge">🏆 ${flagName(e.champion)} · ${e.championConf}</span>`;
   el.innerHTML=`<h3>${e.year} · ${e.host}</h3><span class="host">${e.size} teams · host ${e.hostConf}</span>${badge}`;
 }
 function segLabel(cnt,pct){return state.val==='pct'?(pct+'%'):cnt;}
@@ -567,9 +616,9 @@ function playoffRow(e){
       const chip=document.createElement('div');
       chip.className='po-chip'+(win?' won':' lost'); chip.style.setProperty('--cc',confColor(conf));
       if(state.focus&&state.focus!==conf) chip.style.opacity='.2';
-      chip.title=`${conf} — ${team} — ${win?'won → +1 berth':'lost, no berth'}`;
-      chip.innerHTML=`<span class="pcn">${conf}</span><span class="pct">${team}</span>${win?'<span class="pw">✓</span>':''}`;
-      chip.onmousemove=ev=>showTT(`<div class="tth"><span class="sw" style="background:${confColor(conf)}"></span>${conf}</div><div class="ttv">${team}</div><div class="ttn">${win?'Won the inter-confederation play-off → +1 berth':'Lost the inter-confederation play-off — no berth'}</div>`,ev.clientX,ev.clientY);
+      chip.title=`${conf} — ${flagOf(team)?flagOf(team)+' ':''}${team} — ${win?'won → +1 berth':'lost, no berth'}`;
+      chip.innerHTML=`<span class="pcn">${conf}</span><span class="pct">${flagName(team)}</span>${win?'<span class="pw">✓</span>':''}`;
+      chip.onmousemove=ev=>showTT(`<div class="tth"><span class="sw" style="background:${confColor(conf)}"></span>${conf}</div><div class="ttv">${flagName(team)}</div><div class="ttn">${win?'Won the inter-confederation play-off → +1 berth':'Lost the inter-confederation play-off — no berth'}</div>`,ev.clientX,ev.clientY);
       chip.onmouseleave=hideTT;
       card.appendChild(chip);
     });
@@ -589,13 +638,13 @@ function renderFunnel(){
     if(tier==='members') teamTxt=`${tot}${TIERS.members.approx&&!e.membersExact?' ≈':''}`;
     else if(tier==='direct') teamTxt=`${tot} berths`;
     else if(e.isAgg) teamTxt=`${tot} total`;
-    else if(tier==='winner'&&e.champion) teamTxt=`🏆 ${e.champion}`;
+    else if(tier==='winner'&&e.champion) teamTxt=`🏆 ${flagName(e.champion)}`;
     else teamTxt = teams!=null?`${teams} team${teams===1?'':'s'}`:'';
     row.innerHTML=`<div class="meta"><div class="tlabel">${TIERS[tier].label}</div><div class="tteams">${teamTxt}</div></div>`;
     const bar=document.createElement('div');
     if(pending){
       row.classList.add('pending'); bar.className='bar';
-      bar.innerHTML=`<div class="pmsg">not yet played · begins 4 July 2026</div>`;
+      bar.innerHTML=`<div class="pmsg">not yet played</div>`;
       row.appendChild(bar); host.appendChild(row); return;
     }
     bar.className='bar';
@@ -660,7 +709,7 @@ function renderNations(){
       for(const st of knockoutOrder){ if(e.tiers[st]&&(e.tiers[st][c.k]||[]).includes(nat)){deepest=st;break;} }
       const isChamp=e.champion===nat;
       const badge = deepest?`<span class="stage${isChamp?' crown':''}">${STAGE_ABBR[deepest]||deepest}</span>`:'';
-      col.innerHTML+=`<div class="nat-row"><span>${nat}</span>${badge}</div>`;
+      col.innerHTML+=`<div class="nat-row"><span>${flagName(nat)}</span>${badge}</div>`;
     });
     host.appendChild(col);
   });
@@ -695,7 +744,7 @@ function renderLevels(){
     const b=document.createElement('button'); b.className='lvl';
     b.setAttribute('aria-pressed', state.level===L.n?'true':'false');
     b.innerHTML=`${L.n}<small>${L.sub}</small>`;
-    b.onclick=()=>{state.level=L.n;renderCmp();renderLevels();};
+    b.onclick=()=>{state.level=L.n;state.view='compare';renderCmp();renderLevels();syncHash(true);};
     el.appendChild(b);
   });
 }
@@ -760,9 +809,9 @@ function renderDom(id,tally,total){
 
 /* ============================ WIRE UP ============================ */
 document.querySelectorAll('#valSeg button').forEach(b=>b.onclick=()=>{
-  state.val=b.dataset.val;
-  document.querySelectorAll('#valSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
-  renderFunnel();
+  state.val=b.dataset.val; state.view='funnel';
+  syncValSeg();
+  renderFunnel(); syncHash(false);
 });
 const natToggle=document.getElementById('natToggle');
 natToggle.onclick=()=>{
@@ -781,10 +830,74 @@ function renderAll(){ renderInteractive(); renderCmp(); }
 
 function renderStatic(){ renderTiles(); renderDom('domSF',sfTally,44); renderDom('domWin',winTally,11); renderMini(); renderLevels(); }
 
+/* ============================ DEEP LINKING / ROUTING ============================ */
+/* Shareable state lives in the URL hash, e.g. #edition=2026&level=16&focus=UEFA&val=pct&view=compare
+   - edition : a year (1982…2026) or AGG (the pooled 1998–2022 view)
+   - level   : comparator phase, by teams remaining (48/32/24/16/8/4/2/1)
+   - focus   : highlighted confederation (UEFA/CONMEBOL/CONCACAF/CAF/AFC/OFC)
+   - val     : 'pct' for percentages (omitted when showing counts)
+   - view    : which panel a link points at, so shared links scroll there on open */
+const HASH_EDS=new Set([...ED.map(e=>String(e.year)),'AGG']);
+const LEVEL_SET=new Set(LEVELS.map(L=>L.n));
+let lastHash=null;
+function syncValSeg(){document.querySelectorAll('#valSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.val===state.val?'true':'false'));}
+function readHash(){
+  const h=location.hash.replace(/^#/,''); if(!h)return null;
+  const p=new URLSearchParams(h), out={};
+  const ed=p.get('edition'); if(ed&&HASH_EDS.has(ed)) out.ed = ed==='AGG'?'AGG':Number(ed);
+  const lv=p.get('level'); if(lv&&LEVEL_SET.has(Number(lv))) out.level=Number(lv);
+  const fo=p.get('focus'); if(fo&&CK.includes(fo)) out.focus=fo;
+  const va=p.get('val'); if(va==='pct'||va==='count') out.val=va;
+  const vw=p.get('view'); if(vw==='funnel'||vw==='compare') out.view=vw;
+  return out;
+}
+function applyHashToState(){
+  const h=readHash(); if(!h)return false;
+  if('ed'in h)state.ed=h.ed; if('level'in h)state.level=h.level;
+  if('focus'in h)state.focus=h.focus; if('val'in h)state.val=h.val;
+  if('view'in h)state.view=h.view;
+  return true;
+}
+function stateToHashString(){
+  const p=new URLSearchParams();
+  p.set('edition',String(state.ed));
+  p.set('level',String(state.level));
+  if(state.focus)p.set('focus',state.focus);
+  if(state.val==='pct')p.set('val','pct');
+  if(state.view)p.set('view',state.view);
+  return '#'+p.toString();
+}
+function syncHash(push){
+  const h=stateToHashString(); if(location.hash===h){lastHash=h;return;}
+  if(push)history.pushState(null,'',h); else history.replaceState(null,'',h);
+  lastHash=location.hash;
+}
+function scrollToView(v){const el=document.getElementById(v==='compare'?'sec-compare':'sec-funnel'); if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+function onNav(){ if(location.hash===lastHash)return; lastHash=location.hash; applyHashToState(); renderAll(); renderLevels(); syncValSeg(); }
+function wireShare(id,view){
+  const btn=document.getElementById(id); if(!btn)return;
+  btn.onclick=async()=>{
+    state.view=view; syncHash(false);
+    let ok=false;
+    try{ await navigator.clipboard.writeText(location.href); ok=true; }catch(e){}
+    if(!ok){try{const ta=document.createElement('textarea');ta.value=location.href;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();ok=document.execCommand('copy');document.body.removeChild(ta);}catch(e){}}
+    btn.textContent= ok?'✓ Link copied':'↑ Link in address bar'; btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent=btn.dataset.label; btn.classList.remove('ok');},1700);
+  };
+}
+
 const mo=new MutationObserver(()=>{renderAll();renderStatic();});
 mo.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 matchMedia('(prefers-color-scheme:dark)').addEventListener?.('change',()=>{renderAll();renderStatic();});
 
+applyHashToState();
 renderAll();
 renderStatic();
+syncValSeg();
+lastHash=location.hash;
+if(state.view) scrollToView(state.view);
+addEventListener('popstate',onNav);
+addEventListener('hashchange',onNav);
+wireShare('shareFunnel','funnel');
+wireShare('shareCompare','compare');
 </script>
