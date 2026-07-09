@@ -293,7 +293,7 @@ table.data td .po{color:var(--gold-ink);font-size:11px}
     <h1>211 nations enter.<br>One lifts the trophy.</h1>
     <p class="sub">Twelve World Cups, traced ring by ring — from every FIFA member association, down through qualifying berths and the tournament field, to the last team standing — and colour-coded by the six confederations that funnel the world's teams. Phases are <b>aligned by the number of teams remaining</b>, so 2026's Round of 32 lines up with the 32-nation fields of 1998–2022.</p>
     <div class="mini-funnel" id="miniFunnel" aria-hidden="true"></div>
-    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. The <b>Round of 16 is under way</b> and the quarter-final field is filling in (as of 6 July 2026), so the quarter-finals show as a <b>partial</b>, in-progress ring; later rounds are marked not-yet-played.</p>
+    <p class="sub" style="margin-top:22px;font-size:14px;color:var(--muted)">Live snapshot: the 2026 World Cup is in progress. The <b>Round of 16 is complete and the quarter-final field is set</b> (as of 9 July 2026); the quarter-finals begin 9 July, with the semi-finals and beyond marked not-yet-played.</p>
   </div>
 </header>
 
@@ -445,7 +445,7 @@ table.data td .po{color:var(--gold-ink);font-size:11px}
 </main>
 
 <footer><div class="wrap">
-  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live: Round of 16 under way, quarter-final field filling in (6 July 2026).
+  The World Cup Funnel · 1982–2026 · confederation attribution as of each cycle · 2026 data live: quarter-final field set, quarter-finals begin (9 July 2026).
 </div></footer>
 
 <script>
@@ -604,8 +604,16 @@ function currentEd(){return state.ed==='AGG'?AGG:byYear[state.ed];}
 function renderEdTitle(){
   const e=currentEd(); const el=document.getElementById('edTitle');
   if(e.isAgg){el.innerHTML=`<h3>1998–2022 · pooled</h3><span class="host">Seven 32-team tournaments · 224 team-slots</span><span class="badge">aggregate</span>`;return;}
-  const badge=e.live?`<span class="badge live">● live · R16 under way</span>`
-    :`<span class="badge">🏆 ${flagName(e.champion)} · ${e.championConf}</span>`;
+  let badge;
+  if(e.live){
+    // deepest tier that has been reached (has data and isn't pending)
+    let deep=null;
+    for(const t of e.order){ if(['members','direct','playoffs'].includes(t))continue; if(isPending(e,t))continue; if(e.tiers[t])deep=t; }
+    const dl=deep?TIERS[deep].label:'in progress';
+    badge=`<span class="badge live">● live · ${dl}${deep&&isPartial(e,deep)?' (in progress)':''}</span>`;
+  } else {
+    badge=`<span class="badge">🏆 ${flagName(e.champion)} · ${e.championConf}</span>`;
+  }
   el.innerHTML=`<h3>${e.year} · ${e.host}</h3><span class="host">${e.size} teams · host ${e.hostConf}</span>${badge}`;
 }
 function segLabel(cnt,pct){return state.val==='pct'?(pct+'%'):cnt;}

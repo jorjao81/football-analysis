@@ -1,8 +1,8 @@
 {
   "title": "World Cup Confederation Funnel — 1982–2026",
   "description": "Every FIFA World Cup from 1982 to 2026 as a confederation funnel: FIFA members -> direct berths -> inter-confederation play-offs -> qualified field -> knockout rounds -> champion, phases aligned by teams remaining.",
-  "generated": "2026-07-06",
-  "liveNote": "2026 is in progress; the Round of 16 is under way (as of 6 July 2026). Four quarter-finalists are decided — Morocco (3-0 v Canada), France (1-0 v Paraguay), England (3-2 v Mexico) and Norway (2-1 v Brazil) — so the quarter-finals are shown as a partial tier (see 'partialTiers', 4 of 8 so far); tiers at/after each edition's 'pendingFrom' key (sf onward for 2026) are not yet played.",
+  "generated": "2026-07-09",
+  "liveNote": "2026 is in progress; the Round of 16 is complete and the quarter-final field is set (as of 9 July 2026): Morocco, France, England, Norway, Spain, Belgium, Switzerland and Argentina. The quarter-finals begin 9 July; tiers at/after each edition's 'pendingFrom' key (sf onward for 2026) are not yet played.",
   "confederationOrder": [
     "UEFA",
     "CONMEBOL",
@@ -2205,9 +2205,6 @@
       "live": true,
       "membersExact": true,
       "pendingFrom": "sf",
-      "partialTiers": [
-        "qf"
-      ],
       "order": [
         "members",
         "direct",
@@ -2421,9 +2418,14 @@
           "UEFA": [
             "France",
             "England",
+            "Belgium",
+            "Spain",
+            "Switzerland",
             "Norway"
           ],
-          "CONMEBOL": [],
+          "CONMEBOL": [
+            "Argentina"
+          ],
           "CONCACAF": [],
           "CAF": [
             "Morocco"
